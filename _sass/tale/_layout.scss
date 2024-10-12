@@ -2,6 +2,7 @@
   margin: 0 auto;
   max-width: 1200px;
   width: 90%;
+  min-height: 100vh; /* Full height of the viewport */
 }
 
 main,
@@ -84,9 +85,11 @@ footer {
   font-family: $serif-secondary;
   padding: 2rem 0;
   text-align: center;
-
+  background-color: #f4f4f4; /* Example background color */
   span {
     color: $default-color;
     font-size: .8rem;
   }
 }
+
+

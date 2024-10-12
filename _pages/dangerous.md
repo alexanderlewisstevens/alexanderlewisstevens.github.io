@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "dangerousideas"
+title: "Dangerous Ideas"
 permalink: /dangerousideas/
 ---
 
@@ -10,7 +10,7 @@ permalink: /dangerousideas/
     <div class="tags-header-line"></div>
   </div>
   
-  <div class="tags-item" id="2300">
+  <div class="tags-item" id="ideas">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="20"
@@ -29,7 +29,7 @@ permalink: /dangerousideas/
       <line x1="7" y1="7" x2="7.01" y2="7"></line>
     </svg>
     
-    <h2 class="tags-item-label">CS 2300</h2>
+    <h2 class="tags-item-label">Posts with the "ideas" tag</h2>
     
     {% assign filtered_posts = site.posts | where:"tags","ideas" %}
     
