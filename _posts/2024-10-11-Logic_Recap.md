@@ -13,7 +13,7 @@ tags:
 
 # Understanding Truth Tables in Logic
 
-![Screenshot of Truth Table](assets/Screenshot%202024-10-11%20at%2010.34.35%20PM.png)
+![Screenshot of Truth Table](assets/Screenshot.png)
 
 Truth tables are an essential concept in logic, helping us evaluate logical expressions based on the truth values of their components. A truth table shows all possible truth values of logical variables and the results of logical operators (such as AND, OR, NOT, etc.).
 
