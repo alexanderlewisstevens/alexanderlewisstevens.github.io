@@ -13,7 +13,7 @@ author:
   name:         Alex Stevens
   url:          #https://chester.how
   email:        alex.stevens@du.edu
-
+  linkedin:     https://www.linkedin.com/in/alex-stevens-02a492197/
 # Build settings
 markdown:       kramdown
 include:
