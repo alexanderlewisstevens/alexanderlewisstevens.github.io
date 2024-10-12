@@ -11,6 +11,7 @@ She is the *bees knees*
 
 ![me](assets/alexstevens278-01.png)
 
+<img src="assets/alexstevens278-01.png" alt="Site Logo" title="Company Logo" />
 
 ### Teaching Philosophy
 
