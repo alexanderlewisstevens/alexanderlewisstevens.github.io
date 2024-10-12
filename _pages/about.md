@@ -9,9 +9,9 @@ Michael Sakas is my cute wife.
 
 She is the *bees knees*
 
-![me](assets/alexstevens278-01.png)
+![me](assets/Screenshot 2024-10-11 at 10.34.35 PM.png)
 
-<img src="assets/alexstevens278-01.png" alt="Site Logo" title="Company Logo" />
+<img src="assets/Screenshot 2024-10-11 at 10.34.35 PM.png" alt="Site Logo" title="Company Logo" />
 
 ### Teaching Philosophy
 
