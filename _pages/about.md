@@ -9,7 +9,7 @@ Michael Sakas is my cute wife.
 
 She is the *bees knees*
 
-![me](assets/Screenshot 2024-10-11 at 10.34.35 PM.png)
+![boom](assets/Screenshot 2024-10-11 at 10.34.35 PM.png)
 
 <img src="assets/Screenshot 2024-10-11 at 10.34.35 PM.png" alt="Site Logo" title="Company Logo" />
 
