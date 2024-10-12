@@ -4,6 +4,11 @@ title: "Logic Recap"
 author: "Alex"
 title: "Understanding Truth Tables in Logic"
 date: 2024-10-11
+tags:
+  - logic
+  - mathematics
+  - truth-tables
+  - discrete
 ---
 
 # Understanding Truth Tables in Logic

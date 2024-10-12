@@ -9,8 +9,6 @@ Michael Sakas is my cute wife.
 
 She is the *bees knees*
 
-
-
 ### Teaching Philosophy
 
 ### Inspiring
