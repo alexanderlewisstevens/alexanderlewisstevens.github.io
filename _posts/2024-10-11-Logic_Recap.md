@@ -12,6 +12,11 @@ tags:
   - 2300
 ---
 
+<video width="320" height="240" controls>
+  <source src="assets/AlexTransformation.mp4">
+  Your browser does not support the video tag.
+</video>
+
 # Understanding Truth Tables in Logic
 
 ![Screenshot of Truth Table](/assets/Screenshot.png)
