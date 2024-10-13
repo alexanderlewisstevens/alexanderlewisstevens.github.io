@@ -1,7 +1,7 @@
 ---
 layout: default
-title: "Dangerous Ideas"
-permalink: /dangerousideas/
+title: "Ideas"
+permalink: /ideas/
 ---
 
 <div class="tags">
