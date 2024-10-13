@@ -7,7 +7,7 @@ permalink: /about/
 
 <div style="text-align: center;">
 <video autoplay muted loop>
-<source src="/assets/AlexTransformation.mp4" type="video/mp4">
+<source src="/assets/AlexTransformation.mp4" type="video/mp4" style="width: 70%;">
   Your browser does not support the video tag.
 </video>
 </div>
