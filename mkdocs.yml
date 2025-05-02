@@ -30,7 +30,7 @@
 site_name: MkDocs Template
 site_description: 'A template for future MkDocs wikis'
 site_author: 'Andre_601'
-#site_url: 'https://www.andre601.ch/mkdocs-template' # Uncomment to set a canonical URL
+site_url: 'https://alexanderlewisstevens.github.io/' # Uncomment to set a canonical URL
 
 # +--------------------------------------------------------------------------------------------------------+
 # |                                                                                                        |
