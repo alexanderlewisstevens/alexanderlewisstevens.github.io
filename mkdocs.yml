@@ -481,11 +481,11 @@ extra:
 markdown_extensions:
   - markdown.extensions.admonition:
   - markdown.extensions.codehilite:
-      guess_lang: false
+    guess_lang: false
   - markdown.extensions.toc:
-      permalink: true
+    permalink: true
   - pymdownx.arithmatex:
-      generic: false
+    generic: false
   #- pymdownx.b64:
   #- pymdownx.betterem:
   #- pymdownx.caret:
@@ -515,8 +515,8 @@ plugins:
   - awesome-pages
   - blog
   - rss:
-      match_path: blog/posts/.*
-      use_git: false
+    match_path: blog/posts/.*
+    use_git: false
   - privacy:
     enabled: true
     cache_dir: .cache/privacy
