@@ -1,0 +1,6 @@
+title: Documentation
+arrange:
+  - index.md
+  - guide.md
+  - api/
+  - about.md
