@@ -1,5 +1,3 @@
 title: Documentation
-nav:
-  - index.md
-  - reference/
-  - tutorials/
+order: asc
+
