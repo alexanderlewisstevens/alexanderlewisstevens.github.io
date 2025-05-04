@@ -419,10 +419,14 @@ extra:
   # | - https://squidfunk.github.io/mkdocs-material/setup/setting-up-the-footer/#social-links              |
   # |                                                                                                      |
   # +------------------------------------------------------------------------------------------------------+
-  # social:
-  #   - icon: 'fontawesome/brands/github'
-  #     link: 'https://github.com/Andre601/mkdocs-template'
+  social:
+    - icon: 'fontawesome/brands/github'
+      link: /feed_rss_created.xml
+      name: RSS Feed
   
+  # social:
+  #   - icon: fontawesome/solid/rss
+      
   # +------------------------------------------------------------------------------------------------------+
   # |                                                                                                      |
   # | Allows you to hide the "Made with Material for MkDocs" text in the footer of the pages by setting    |
