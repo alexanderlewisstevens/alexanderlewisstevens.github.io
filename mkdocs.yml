@@ -492,8 +492,8 @@ plugins:
   - awesome-pages
   - blog
   - rss:
-    match_path: blog/posts/.*
-    use_git: false
+      match_path: blog/posts/.*
+      use_git: false
   - privacy:
     enabled: true
     cache_dir: .cache/privacy
