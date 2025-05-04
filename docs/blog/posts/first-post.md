@@ -1,3 +1,11 @@
+---
+title: First Blog Post
+date: 2025-05-03
+tags:
+  - intro
+  - example
+---
+
 # First Blog Post
 
 Welcome to the blog! This is the first post.
