@@ -390,7 +390,8 @@ theme:
 # | - https://www.mkdocs.org/user-guide/configuration/#extra_javascript                                    |
 # |                                                                                                        |
 # +--------------------------------------------------------------------------------------------------------+
-#extra_javascript:
+extra_javascript:
+  - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML
 
 # +--------------------------------------------------------------------------------------------------------+
 # |                                                                                                        |
@@ -482,8 +483,8 @@ markdown_extensions:
       guess_lang: false
   - markdown.extensions.toc:
       permalink: true
-  - pymdownx.arithmex:
-      generic: true
+  - pymdownx.arithmatex:
+      generic: false
   #- pymdownx.b64:
   #- pymdownx.betterem:
   #- pymdownx.caret:
