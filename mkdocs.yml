@@ -418,9 +418,9 @@ extra:
   # | - https://squidfunk.github.io/mkdocs-material/setup/setting-up-the-footer/#social-links              |
   # |                                                                                                      |
   # +------------------------------------------------------------------------------------------------------+
-  social:
-    - icon: 'fontawesome/brands/github'
-      link: 'https://github.com/Andre601/mkdocs-template'
+  # social:
+  #   - icon: 'fontawesome/brands/github'
+  #     link: 'https://github.com/Andre601/mkdocs-template'
   
   # +------------------------------------------------------------------------------------------------------+
   # |                                                                                                      |
@@ -431,7 +431,7 @@ extra:
   # | - https://squidfunk.github.io/mkdocs-material/setup/setting-up-the-footer/#generator-notice          |
   # |                                                                                                      |
   # +------------------------------------------------------------------------------------------------------+
-  #generator: true
+  generator: true
   
   # +------------------------------------------------------------------------------------------------------+
   # |                                                                                                      |
