@@ -8,9 +8,19 @@ tags:
 
 # First Blog Post
 
-Welcome to the blog! This is the first post.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.
 
 ## Highlights
 
-- This is an example blog post.
-- You can add more posts in the `docs/blog` folder.
+- **Markdown**: Easy to write and read.
+- **Math**: Beautiful equations like:
+
+$$ a^2 + b^2 = c^2 $$
+
+- **Code**: Example below:
+
+```javascript
+console.log("Hello, World!");
+```
+
+Welcome to the blog! This is the first post.
