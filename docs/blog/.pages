@@ -1,0 +1,4 @@
+title: Blog
+collapse: true
+nav:
+  - first-post.md

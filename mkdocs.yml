@@ -92,8 +92,10 @@ repo_url: https://github.com/Andre601/mkdocs-template
 # | - https://www.mkdocs.org/user-guide/configuration/#documentation-layout                                |
 # |                                                                                                        |
 # +--------------------------------------------------------------------------------------------------------+
-# nav:
-#   - Welcome: index.md
+nav:
+  - Welcome: index.md
+  - Tutorials: tutorials/.pages
+  - Blog: blog/.pages
 
 # +--------------------------------------------------------------------------------------------------------+
 # |                                                                                                        |
@@ -505,3 +507,4 @@ markdown_extensions:
 plugins:
   - search
   - awesome-pages
+  - blog
