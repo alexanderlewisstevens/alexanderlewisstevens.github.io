@@ -92,8 +92,8 @@ repo_url: https://github.com/Andre601/mkdocs-template
 # | - https://www.mkdocs.org/user-guide/configuration/#documentation-layout                                |
 # |                                                                                                        |
 # +--------------------------------------------------------------------------------------------------------+
-nav:
-  - Welcome: index.md
+# nav:
+#   - Welcome: index.md
 
 # +--------------------------------------------------------------------------------------------------------+
 # |                                                                                                        |
