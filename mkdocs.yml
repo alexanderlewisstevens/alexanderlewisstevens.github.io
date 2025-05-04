@@ -482,7 +482,8 @@ markdown_extensions:
       guess_lang: false
   - markdown.extensions.toc:
       permalink: true
-  #- pymdownx.arithmex:
+  - pymdownx.arithmex:
+      generic: true
   #- pymdownx.b64:
   #- pymdownx.betterem:
   #- pymdownx.caret:
@@ -511,3 +512,4 @@ plugins:
   - search
   - awesome-pages
   - blog
+
