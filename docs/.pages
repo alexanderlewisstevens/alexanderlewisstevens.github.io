@@ -1,5 +1,5 @@
 title: Documentation
 nav:
   - index.md
-  - api/
-  - about.md
+  - reference/
+  - tutorials/
