@@ -75,8 +75,9 @@ docs_dir: docs/
 # | - https://www.mkdocs.org/user-guide/configuration/#edit_uri                                            |
 # |                                                                                                        |
 # +--------------------------------------------------------------------------------------------------------+
-repo_name: Andre601/mkdocs-template
-repo_url: https://github.com/Andre601/mkdocs-template
+# repo_name: Andre601/mkdocs-template
+# repo_url: https://github.com/Andre601/mkdocs-template
+
 #edit_uri: tree/master/docs # Uncomment to define a different URI/URL for the "edit" option
 
 # +--------------------------------------------------------------------------------------------------------+
@@ -92,10 +93,12 @@ repo_url: https://github.com/Andre601/mkdocs-template
 # | - https://www.mkdocs.org/user-guide/configuration/#documentation-layout                                |
 # |                                                                                                        |
 # +--------------------------------------------------------------------------------------------------------+
-nav:
-  - Welcome: index.md
-  - Tutorials: tutorials/.pages
-  - Blog: blog/.pages
+
+# nav:
+#   - Welcome: index.md
+#   - Reference: reference/
+#   - Tutorials: tutorials/
+#   - Blog: blog/
 
 # +--------------------------------------------------------------------------------------------------------+
 # |                                                                                                        |

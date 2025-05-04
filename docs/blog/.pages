@@ -1,4 +1,6 @@
 title: Blog
 collapse: true
 nav:
-  - first-post.md
+  - posts/first-post.md
+  - posts/second-post.md
+  - posts/third-post.md
