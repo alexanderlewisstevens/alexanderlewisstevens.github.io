@@ -25,7 +25,8 @@ $$ e^{i\pi} + 1 = 0 $$
 
 ### Image Example
 
-![Placeholder Image](https://via.placeholder.com/150)
+<img width="393" alt="image" src="https://github.com/user-attachments/assets/0fd00338-3573-4731-b9c9-5d8104bf031d" />
+
 
 Use the sidebar to navigate through the sections.
 <img width="467" alt="image" src="https://github.com/user-attachments/assets/451ffc04-87e0-4c69-b4eb-105e38912dd4" />
