@@ -513,5 +513,5 @@ plugins:
   - search
   - awesome-pages
   - blog
-  - rss
-
+  - rss:
+      use_git: false
