@@ -420,7 +420,7 @@ extra:
   # |                                                                                                      |
   # +------------------------------------------------------------------------------------------------------+
   social:
-    - icon: 'fontawesome/brands/github'
+    - icon: 'fontawesome/solid/rss'
       link: /feed_rss_created.xml
       name: RSS Feed
   
