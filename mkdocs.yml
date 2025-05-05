@@ -29,7 +29,7 @@
 # +--------------------------------------------------------------------------------------------------------+
 site_name: MkDocs Template
 site_description: 'A template for future MkDocs wikis'
-site_author: 'Stevens'
+site_author: 'alexander.lewis.stevens@gmail.com'
 site_url: 'https://alexanderlewisstevens.github.io/' # Uncomment to set a canonical URL
 
 # +--------------------------------------------------------------------------------------------------------+
