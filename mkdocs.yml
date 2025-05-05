@@ -498,6 +498,9 @@ plugins:
   - rss:
       match_path: blog/posts/.*
       use_git: false
+      enabled: true
+      namespaces:
+        atom: http://www.w3.org/2005/Atom
   - privacy:
       enabled: true
       cache_dir: .cache/privacy
