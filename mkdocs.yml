@@ -497,7 +497,7 @@ plugins:
   - blog
   - rss:
       match_path: blog/posts/.*
-      image: https://alexanderlewisstevens.github.io/assets/images/logo.png
+      image: https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Feed-icon.svg/128px-Feed-icon.svg.png
       author_email: alexander.lewis.stevens@gmail.com
       use_git: false
       enabled: true
