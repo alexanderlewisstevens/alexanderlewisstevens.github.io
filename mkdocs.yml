@@ -27,8 +27,8 @@
 # | - https://www.mkdocs.org/user-guide/configuration/#site_url                                            |
 # |                                                                                                        |
 # +--------------------------------------------------------------------------------------------------------+
-site_name: MkDocs Template
-site_description: 'A template for future MkDocs wikis'
+site_name: MkDocs with Materials
+site_description: 'A little bit of this and a little bit of that'
 site_author: 'alexander.lewis.stevens@gmail.com'
 site_url: 'https://alexanderlewisstevens.github.io/' # Uncomment to set a canonical URL
 
