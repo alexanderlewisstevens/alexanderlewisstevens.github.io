@@ -497,6 +497,8 @@ plugins:
   - blog
   - rss:
       match_path: blog/posts/.*
+      image: https://alexanderlewisstevens.github.io/assets/images/logo.png
+      author_email: alexander.lewis.stevens@gmail.com
       use_git: false
       enabled: true
       namespaces:
