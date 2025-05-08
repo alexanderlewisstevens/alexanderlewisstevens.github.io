@@ -291,7 +291,9 @@ theme:
   #- navigation.tabs.sticky # Tabs won't disappear when scrolling down. Requires "navigation.tabs".
   #- navigation.top         # Adds a "Back to top" that is shown when scrolling up.
   #- navigation.tracking    # Updates the url with highlighted section anchor.
-  
+  #########################################################################################################################################
+
+  #########################################################################################################################################
   # Search
   #
   #- search.highlight # Search will highlight the searched word(s) on the page.*
@@ -490,7 +492,6 @@ markdown_extensions:
       permalink: true
   - pymdownx.arithmatex:
       generic: true
-markdown_extensions:
   - markdown.extensions.admonition:
   - markdown.extensions.codehilite:
       guess_lang: false
