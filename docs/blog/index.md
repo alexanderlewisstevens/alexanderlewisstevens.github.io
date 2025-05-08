@@ -7,6 +7,7 @@ Welcome to the blog! Here you'll find a collection of thoughts, updates, and ran
 - [First Blog Post](posts/first-post.md)
 - [Second Blog Post](posts/second-post.md)
 - [Third Blog Post](posts/third-post.md)
+- [Third Blog Post](posts/fourth-post.md)
 
 ### Markdown Tips
 
