@@ -73,3 +73,30 @@ To work with this project in a reproducible environment, follow these steps:
 VS Code will automatically build the container, install all dependencies and recommended extensions, and set up your environment.
 
 You can now use the integrated terminal to run Makefile commands or use Docker as described below.
+
+## Fun Tabs Demo
+
+=== "Jokes"
+
+    - Why do programmers prefer dark mode? Because light attracts bugs!
+    - Why did the function return early? Because it had a timeout!
+
+=== "Quotes"
+
+    > "Code is like humor. When you have to explain it, it’s bad." – Cory House
+    >
+    > "First, solve the problem. Then, write the code." – John Johnson
+
+=== "ASCII Art"
+
+    ```
+    (\_/)
+    ( •_•)
+    / >🍪  Here, have a cookie!
+    ```
+
+## Blog Post Sampler
+
+- [How to Debug Like a Pro](posts/debug-like-a-pro.md)
+- [Top 5 Python Tricks](posts/python-tricks.md)
+- [Why Markdown is Awesome](posts/markdown-awesome.md)
