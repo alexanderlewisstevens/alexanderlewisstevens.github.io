@@ -1,1 +1,12 @@
 @import "extensions/tabbed.css";
+
+/* Make the main content area much wider */
+.md-main__inner, .md-content__inner {
+  max-width: 95vw !important;
+  width: 95vw !important;
+}
+
+/* Optionally, make code blocks and tables wider too */
+.md-typeset pre, .md-typeset table {
+  max-width: 90vw !important;
+}
