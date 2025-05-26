@@ -15,6 +15,9 @@
 
 All contributors will have a consistent environment, including Python, MkDocs, and all required plugins.
 
+> **Note:**  
+> If you add or remove MkDocs plugins in `mkdocs.yml`, make sure to update `requirements.txt` accordingly.
+
 ## Manual Development (without Dev Containers)
 
 - Install Python 3.7+
