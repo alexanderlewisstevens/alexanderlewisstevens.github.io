@@ -1,6 +1,6 @@
 # Welcome to the Docs
 
-BEANS TESTING
+This is a test 2025-05-25
 
 This is a good sign
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum. Cras venenatis euismod malesuada.
