@@ -1,10 +1,19 @@
-// Parallax scroll effect for hero banner with two different speeds
+// Optimized parallax scroll effect for hero text blocks only
+let ticking = false;
 window.addEventListener('scroll', function() {
-  var hero = document.querySelector('.mdx-hero');
-  if (hero) {
-    var offset1 = window.scrollY * 0.3; // slower
-    var offset2 = window.scrollY * 1.2; // much faster
-    hero.style.setProperty('--parallax-scroll1', offset1 + 'px');
-    hero.style.setProperty('--parallax-scroll2', offset2 + 'px');
+  if (!ticking) {
+    window.requestAnimationFrame(function() {
+      var hero = document.querySelector('.mdx-hero');
+      if (hero) {
+        var title = hero.querySelector('.mdx-hero__title');
+        var subtitle = hero.querySelector('.mdx-hero__subtitle');
+        var desc = hero.querySelector('.mdx-hero__desc');
+        if (title) title.style.setProperty('--parallax-title', (window.scrollY * 0.5) + 'px');
+        if (subtitle) subtitle.style.setProperty('--parallax-subtitle', (window.scrollY * 0.8) + 'px');
+        if (desc) desc.style.setProperty('--parallax-desc', (window.scrollY * 0.2) + 'px');
+      }
+      ticking = false;
+    });
+    ticking = true;
   }
 });

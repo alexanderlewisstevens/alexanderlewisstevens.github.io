@@ -28,23 +28,27 @@
 /* Hero banner parallax-like effect for MkDocs Material */
 .mdx-hero {
   position: relative;
+  left: 0;
+  right: 0;
   width: 100vw;
-  min-height: 80vh;
+  min-height: 100vh;
+  margin: 0 !important;
+  padding: 0 !important;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('/assets/images/background_image.jpg'), url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1500&q=80');
-  background-size: 200vw 200vh, 200vw 200vh, 200vw 200vh;
-  background-repeat: no-repeat, no-repeat, no-repeat;
-  background-attachment: scroll, fixed, fixed;
+  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('/assets/images/background_image.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   color: #fff;
   text-align: center;
   z-index: 1;
-  --parallax-scroll1: 0px;
-  --parallax-scroll2: 0px;
-  background-position: center center, center calc(var(--parallax-scroll1, 0px)), center calc(var(--parallax-scroll2, 0px));
+  --parallax-title: 0px;
+  --parallax-subtitle: 0px;
+  --parallax-desc: 0px;
 }
 .mdx-hero__title {
   font-size: 3rem;
@@ -53,13 +57,22 @@
   letter-spacing: 0.02em;
   text-shadow: 0 2px 8px rgba(0,0,0,0.3);
   transition: transform 0.4s cubic-bezier(.4,0,.2,1);
+  will-change: transform;
+  transform: translateY(var(--parallax-title, 0px));
 }
 .mdx-hero__subtitle {
   font-size: 1.5rem;
   font-weight: 400;
   margin-bottom: 1em;
   text-shadow: 0 1px 4px rgba(0,0,0,0.2);
-  transition: opacity 0.4s cubic-bezier(.4,0,.2,1);
+  transition: opacity 0.4s cubic-bezier(.4,0,.2,1), transform 0.4s cubic-bezier(.4,0,.2,1);
+  will-change: transform;
+  transform: translateY(var(--parallax-subtitle, 0px));
+}
+.mdx-hero__desc {
+  transition: transform 0.4s cubic-bezier(.4,0,.2,1);
+  will-change: transform;
+  transform: translateY(var(--parallax-desc, 0px));
 }
 @media (max-width: 600px) {
   .mdx-hero__title { font-size: 2rem; }
