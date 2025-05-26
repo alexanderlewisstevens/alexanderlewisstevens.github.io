@@ -532,8 +532,3 @@ plugins:
       enabled: true
       namespaces:
         atom: http://www.w3.org/2005/Atom
-  - privacy:
-      enabled: true
-      cache_dir: .cache/privacy
-      target_dir: assets/privacy
-      rewrite: true
