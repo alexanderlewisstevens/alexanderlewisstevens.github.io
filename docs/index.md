@@ -1,3 +1,8 @@
+<div class="mdx-hero">
+  <div class="mdx-hero__title">Welcome to My Site</div>
+  <div class="mdx-hero__subtitle">A beautiful, modern MkDocs homepage with a parallax hero effect.<br>Scroll down to explore!</div>
+</div>
+
 ## Recommended VS Code Extensions & Dev Container
 
 The most efficient and reproducible way to work with this project is to use [VS Code Dev Containers](https://code.visualstudio.com/docs/devcontainers/containers).  
