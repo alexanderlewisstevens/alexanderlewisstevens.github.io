@@ -1,10 +1,2 @@
 title: Blog
 collapse: true
-nav:
-  - posts/first-post.md
-  - posts/second-post.md
-  - posts/third-post.md
-  - posts/fourth-post.md
-  - posts/debug-like-a-pro.md
-  - posts/python-tricks.md
-  - posts/markdown-awesome.md
