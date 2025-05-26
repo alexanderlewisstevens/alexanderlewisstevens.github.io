@@ -1,6 +1,24 @@
+## Recommended VS Code Extensions & Dev Container
+
+The most efficient and reproducible way to work with this project is to use [VS Code Dev Containers](https://code.visualstudio.com/docs/devcontainers/containers).  
+If you open this workspace in a Dev Container, all required tools and extensions will be installed automatically.
+
+If you are not using Dev Containers, install these extensions:
+
+- **Python** (`ms-python.python`): Required for Python development and running scripts.
+- **Docker** (`ms-azuretools.vscode-docker`): Required if you use Docker workflow.
+- **Makefile Tools** (`ms-vscode.makefile-tools`): Strongly recommended for running Makefile targets easily.
+
+Optional but helpful:
+- **Markdown All in One** (`yzhang.markdown-all-in-one`): For enhanced Markdown editing.
+- **Markdown Preview Enhanced** (`shd101wyy.markdown-preview-enhanced`): For advanced Markdown preview, including math.
+- **YAML** (`redhat.vscode-yaml`): For editing `mkdocs.yml` and other YAML files.
+- **GitHub Pull Requests and Issues** (`github.vscode-pull-request-github`): For GitHub integration.
+- **Remote - Containers** (`ms-vscode-remote.remote-containers`): If using VS Code Dev Containers.
+
 # Welcome to the Docs
 
-This is a test 2025-05-25
+This is a test 2025-05-25 2025-05-25
 
 This is a good sign
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum. Cras venenatis euismod malesuada.
@@ -33,3 +51,24 @@ $$ e^{i\pi} + 1 = 0 $$
 
 Use the sidebar to navigate through the sections.
 <img width="467" alt="image" src="https://github.com/user-attachments/assets/451ffc04-87e0-4c69-b4eb-105e38912dd4" />
+
+## Getting Started with Dev Containers
+
+To work with this project in a reproducible environment, follow these steps:
+
+1. **Clone the repository:**
+   ```sh
+   git clone https://github.com/your-username/your-repo.git
+   cd your-repo
+   ```
+
+2. **Open the project in VS Code.**
+
+3. **Reopen in Dev Container:**
+   - If prompted, click "Reopen in Container".
+   - Or, open the Command Palette (`Ctrl+Shift+P`), then select:  
+     `Dev Containers: Reopen in Container`
+
+VS Code will automatically build the container, install all dependencies and recommended extensions, and set up your environment.
+
+You can now use the integrated terminal to run Makefile commands or use Docker as described below.
