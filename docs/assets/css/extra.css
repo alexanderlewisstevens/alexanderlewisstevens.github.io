@@ -1,7 +1,7 @@
 @import "extensions/tabbed.css";
 
-/* Make the main content area extremely wide at all breakpoints */
-.md-main__inner, .md-content__inner, .md-content, .md-grid {
+/* Make the main content area, header, and footer extremely wide at all breakpoints */
+.md-main__inner, .md-content__inner, .md-content, .md-grid, .md-header, .md-footer, .md-footer-meta, .md-footer-meta__inner {
   max-width: none !important;
   width: 100vw !important;
   margin-left: 0 !important;
@@ -19,7 +19,7 @@
   .md-sidebar--primary, .md-sidebar--secondary {
     max-width: 20vw !important;
   }
-  .md-main__inner, .md-content__inner, .md-content, .md-grid {
+  .md-main__inner, .md-content__inner, .md-content, .md-grid, .md-header, .md-footer, .md-footer-meta, .md-footer-meta__inner {
     max-width: none !important;
     width: 100vw !important;
   }
