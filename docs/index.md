@@ -1,3 +1,17 @@
+---
+hide:
+  - navigation
+  - toc
+  - path
+  - breadcrumbs
+  - footer
+  - title
+  - search
+  - edit
+  - next
+  - previous
+---
+
 <div class="mdx-hero">
   <div class="mdx-hero__title">Welcome to My Site</div>
   <div class="mdx-hero__subtitle">A beautiful, modern MkDocs homepage with a parallax hero effect.<br>Scroll down to explore!</div>
