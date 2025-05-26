@@ -380,7 +380,8 @@ theme:
 # | - https://www.mkdocs.org/user-guide/configuration/#extra_css                                           |
 # |                                                                                                        |
 # +--------------------------------------------------------------------------------------------------------+
-#extra_css:
+extra_css:
+  - assets/css/extra.css
 
 # +--------------------------------------------------------------------------------------------------------+
 # |                                                                                                        |
@@ -396,6 +397,7 @@ theme:
 extra_javascript:
   - javascripts/mathjax.js
   - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+  - javascripts/parallax.js
 
 # +--------------------------------------------------------------------------------------------------------+
 # |                                                                                                        |
@@ -486,6 +488,7 @@ extra:
 # |                                                                                                        |
 # +--------------------------------------------------------------------------------------------------------+
 markdown_extensions:
+  - attr_list
   - admonition
   - codehilite:
       guess_lang: false
