@@ -3,5 +3,4 @@ mkdocs-material
 mkdocs-awesome-pages-plugin
 pymdown-extensions
 mkdocs-rss-plugin
-mkdocs-privacy
 mkdocs-blog-plugin
