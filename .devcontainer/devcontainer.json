@@ -11,7 +11,8 @@
     "ms-vscode.makefile-tools",
     "yzhang.markdown-all-in-one",
     "shd101wyy.markdown-preview-enhanced",
-    "redhat.vscode-yaml"
+    "redhat.vscode-yaml",
+    "eamodio.gitlens"
   ],
   "settings": {
     "python.defaultInterpreterPath": "/usr/local/bin/python"
