@@ -19,6 +19,8 @@ hide:
 
 ## Recommended VS Code Extensions & Dev Container
 
+Testing Testing 123
+
 The most efficient and reproducible way to work with this project is to use [VS Code Dev Containers](https://code.visualstudio.com/docs/devcontainers/containers).  
 If you open this workspace in a Dev Container, all required tools and extensions will be installed automatically.
 
