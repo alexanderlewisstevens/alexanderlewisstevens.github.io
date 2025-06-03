@@ -172,48 +172,45 @@ theme:
     # |                                                                                                    |
     # +----------------------------------------------------------------------------------------------------+
     scheme: 'slate'
-    
-    
-    # +----------------------------------------------------------------------------------------------------+
-    # |                                                                                                    |
-    # | "primary" is used to set the main color of the Material Theme.                                     |
-    # |                                                                                                    |
-    # | The primary color is used on the top banner of the page but also for things like the link color.   |
-    # |                                                                                                    |
-    # | Read More:                                                                                         |
-    # | - https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/#primary-color             |
-    # |                                                                                                    |
-    # +----------------------------------------------------------------------------------------------------+
-    primary: #'indigo' 
-            'deep purple'
-    
-    # +----------------------------------------------------------------------------------------------------+
-    # |                                                                                                    |
-    # | The "accent" is used for moments such as hovering over links.                                      |
-    # |                                                                                                    |
-    # | Read More:                                                                                         |
-    # | - https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/#accent-color              |
-    # |                                                                                                    |
-    # +----------------------------------------------------------------------------------------------------+
-    accent: 'indigo'
-    
-  # +------------------------------------------------------------------------------------------------------+
-  # |                                                                                                      |
-  # | With the "font" option can you set a different font to use.                                          |
-  # |                                                                                                      |
-  # | Material supports all Google fonts, but you can also define your own ones if you choose so.          |
-  # |                                                                                                      |
-  # | The "text" option is used for the regular font while "code" is used for code blocks, inline code and |
-  # | similar.                                                                                             |
-  # |                                                                                                      |
-  # | Read More:                                                                                           |
-  # | - https://squidfunk.github.io/mkdocs-material/setup/changing-the-fonts/                              |
-  # |                                                                                                      |
-  # +------------------------------------------------------------------------------------------------------+
+  # scheme: 'default'
+  # scheme: 'palenight'
+  # scheme: 'dracula'
+  # scheme: 'nord'
+  # scheme: 'dark'
+  # scheme: 'light'
+
+  primary: 'deep purple'
+  # primary: 'indigo'
+  # primary: 'cyan'
+  # primary: 'amber'
+  # primary: 'pink'
+  # primary: 'teal'
+  # primary: 'lime'
+  # primary: 'blue grey'
+
+  accent: 'indigo'
+  # accent: 'pink'
+  # accent: 'orange'
+  # accent: 'green'
+  # accent: 'light blue'
+  # accent: 'red'
+  # accent: 'purple'
+  # accent: 'yellow'
+
   font:
-   text: 'Roboto'
-   code: 'Roboto Mono'
-  
+    text: 'Roboto'
+    code: 'Roboto Mono'
+    # text: 'Fira Sans'
+    # code: 'Fira Code'
+    # text: 'Open Sans'
+    # code: 'Source Code Pro'
+    # text: 'Lato'
+    # code: 'Courier Prime'
+    # text: 'Inter'
+    # code: 'JetBrains Mono'
+    # text: 'Work Sans'
+    # code: 'IBM Plex Mono'
+
   # +------------------------------------------------------------------------------------------------------+
   # |                                                                                                      |
   # | Material suppors more than 40 different languages which you can set using the "language" option      |
