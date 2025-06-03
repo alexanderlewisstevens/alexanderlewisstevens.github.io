@@ -12,7 +12,8 @@
     "yzhang.markdown-all-in-one",
     "shd101wyy.markdown-preview-enhanced",
     "redhat.vscode-yaml",
-    "eamodio.gitlens"
+    "eamodio.gitlens",
+    "GitHub.copilot"
   ],
   "settings": {
     "python.defaultInterpreterPath": "/usr/local/bin/python"
