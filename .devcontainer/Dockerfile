@@ -1,6 +1,6 @@
 FROM python:3.11-slim
 
-WORKDIR /docs
+WORKDIR /beans
 
 # Install git
 RUN apt-get update && \
