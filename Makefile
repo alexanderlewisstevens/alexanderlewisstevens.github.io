@@ -1,6 +1,6 @@
 .PHONY: serve build gh-deploy docker-build docker-build-only docker-serve docker-build-image help clean lint test docker-shell
 
-PIP_INSTALL = pip install -r requirements.txt
+PIP_INSTALL = python3 -m pip install -r requirements.txt
 
 # Local workflow
 serve:
@@ -51,7 +51,7 @@ lint: ## Lint Python and Markdown files
 	@python3 -m pip install --quiet flake8
 	@flake8 docs/ theme/ || true
 	@echo "Linting Markdown files..."
-	@python3 -m pip install --quiet markdownlint-cli || true
+	@which markdownlint || python3 -m pip install --quiet markdownlint-cli
 	@markdownlint docs/**/*.md || true
 
 test: ## Run tests (placeholder)
