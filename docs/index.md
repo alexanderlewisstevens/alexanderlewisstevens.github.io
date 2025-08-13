@@ -122,3 +122,7 @@ You can now use the integrated terminal to run Makefile commands or use Docker a
 - [How to Debug Like a Pro](posts/debug-like-a-pro.md)
 - [Top 5 Python Tricks](posts/python-tricks.md)
 - [Why Markdown is Awesome](posts/markdown-awesome.md)
+
+## Explore Feature Examples
+
+Discover more Markdown capabilities in the [examples](examples/index.md) section.
