@@ -13,9 +13,9 @@ Curabitur blandit tempus porttitor. Nullam id dolor id nibh ultricies vehicula u
 ## Random Thoughts
 
 - **Philosophy**: "Cogito, ergo sum."
-- **Math Fun**: 
+- **Math Fun**:
 
-$$ \sum_{n=1}^\infty \frac{1}{n^2} = \frac{\pi^2}{6} $$
+$$ \sum\_{n=1}^\infty \frac{1}{n^2} = \frac{\pi^2}{6} $$
 
 - **Code Example**:
 

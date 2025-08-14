@@ -1,10 +1,10 @@
 # Admonitions
 
 !!! note
-    This is a simple note.
+This is a simple note.
 
 !!! warning
-    Be careful with warnings!
+Be careful with warnings!
 
 ??? tip "Expandable"
-    Details can be hidden inside collapsible tips.
+Details can be hidden inside collapsible tips.

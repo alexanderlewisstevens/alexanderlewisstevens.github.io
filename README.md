@@ -3,6 +3,7 @@
 # Quick Start for Students
 
 ## 1. Install Python
+
 - Download and install Python 3.11 or newer from [python.org](https://www.python.org/downloads/).
 - On Windows, check the box to add Python to PATH during installation.
 - To check your Python version, run:
@@ -14,6 +15,7 @@
 - If you don't have `pip`, see [pip installation guide](https://pip.pypa.io/en/stable/installation/).
 
 ## 2. Install Git
+
 - Download and install Git from [git-scm.com](https://git-scm.com/downloads).
 - To check if Git is installed, run:
   ```bash
@@ -21,28 +23,34 @@
   ```
 
 ## 3. Open a Terminal
+
 - **Windows:** Use Command Prompt, PowerShell, or Windows Terminal.
 - **Mac/Linux:** Use Terminal app.
 
 ## 4. Clone the Repository
+
 ```bash
 git clone <your-repo-url>
 cd alexanderlewisstevens.github.io
 ```
 
 ## 5. Install Dependencies
+
 ```bash
 pip install -r requirements.txt
 ```
+
 - If you get errors, try:
   ```bash
   pip install --upgrade -r requirements.txt
   ```
 
 ## 6. Preview the Site Locally
+
 ```bash
 mkdocs serve
 ```
+
 - If `mkdocs` is not found, try:
   ```bash
   python -m mkdocs serve
@@ -54,14 +62,17 @@ mkdocs serve
   ```
 
 ## 7. Build the Site
+
 ```bash
 mkdocs build
 ```
 
 ## 8. Edit Files
+
 - Use [VS Code](https://code.visualstudio.com/) or any text editor to edit Markdown files in the `docs/` folder.
 
 ## 9. Push Your Changes to GitHub
+
 ```bash
 git add .
 git commit -m "Describe your changes"
@@ -69,6 +80,7 @@ git push
 ```
 
 ## 10. Resetting Your Repo (if you get stuck)
+
 ```bash
 cd ..
 rm -rf alexanderlewisstevens.github.io
@@ -100,6 +112,7 @@ All contributors will have a consistent environment, including Python, MkDocs, a
 - Use `make serve` or `mkdocs serve` to preview
 
 ## Troubleshooting
+
 - If `mkdocs` is not found, ensure your Python Scripts directory is in your PATH.
 - If port 8000 is in use, try `mkdocs serve -a 127.0.0.1:8001`.
 - If you see permission errors, try running the command with `python -m mkdocs`.
@@ -107,6 +120,7 @@ All contributors will have a consistent environment, including Python, MkDocs, a
 - For broken links or images, check file paths and ensure referenced files exist.
 
 ## Getting Help
+
 - If you need help, contact your instructor, ask on Discord/Teams, or open an issue on GitHub.
 
 ---

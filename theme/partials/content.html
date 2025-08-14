@@ -21,9 +21,8 @@
 -->
 
 <!-- Tags -->
-{% if "material/tags" in config.plugins %}
-  {% include "partials/tags.html" %}
-{% endif %}
+{% if "material/tags" in config.plugins %} {% include "partials/tags.html" %} {%
+endif %}
 
 <!-- Actions -->
 {% include "partials/actions.html" %}
@@ -33,7 +32,7 @@
   page title (or respectively site name) is used as the main headline.
 -->
 {% if "\x3ch1" not in page.content %}
-  <h1>{{ page.title | d(config.site_name, true)}}</h1>
+<h1>{{ page.title | d(config.site_name, true)}}</h1>
 {% endif %}
 
 <!-- Page content -->
@@ -46,9 +45,6 @@
 {% include "partials/comments.html" %}
 
 <!-- Source file information -->
-{% if page.meta and (
-  page.meta.git_revision_date_localized or
-  page.meta.revision_date
-) %}
-  {% include "partials/source-file.html" %}
-{% endif %}
+{% if page.meta and ( page.meta.git_revision_date_localized or
+page.meta.revision_date ) %} {% include "partials/source-file.html" %} {% endif
+%}

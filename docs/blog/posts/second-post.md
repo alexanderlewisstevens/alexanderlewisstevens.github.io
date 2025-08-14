@@ -13,7 +13,7 @@ Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis moll
 ## Updates
 
 - **New Features**: Added support for advanced Markdown.
-- **Math Example**: 
+- **Math Example**:
 
 $$ \nabla \cdot \mathbf{E} = \frac{\rho}{\epsilon_0} $$
 
@@ -21,7 +21,7 @@ $$ \nabla \cdot \mathbf{E} = \frac{\rho}{\epsilon_0} $$
 
 ```html
 <div class="example">
-    <p>Hello, World!</p>
+  <p>Hello, World!</p>
 </div>
 ```
 

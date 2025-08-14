@@ -1,7 +1,7 @@
 ## Possible color codes
 
-| Code | Color        | Returned Value | Preview                                       |
-|------|--------------|----------------|-----------------------------------------------|
+| Code | Color        | Returned Value | Preview                                     |
+| ---- | ------------ | -------------- | ------------------------------------------- |
 | `0`  | Black        | `§0`           | :material-square:{ style="color: #000000" } |
 | `1`  | Dark Blue    | `§1`           | :material-square:{ style="color: #0000AA" } |
 | `2`  | Dark Green   | `§2`           | :material-square:{ style="color: #00AA00" } |

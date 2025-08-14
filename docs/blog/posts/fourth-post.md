@@ -65,7 +65,7 @@ Allows embedding base64-encoded images directly in Markdown.
 
 Improves handling of emphasis (e.g., avoids nested emphasis bugs).
 
-*Italic* vs **Bold** vs ***BoldItalic***
+_Italic_ vs **Bold** vs **_BoldItalic_**
 
 ### caret
 
@@ -147,7 +147,7 @@ An image: ![example](docs/images/example.png)
 
 Creates text-based progress bars.
 
-\[=        ] 25%
+\[= ] 25%
 
 ### smartsymbols
 
@@ -193,12 +193,11 @@ Content for tab two.
 
 Adds GitHub-style task lists.
 
-* [x] Task one
-* [ ] Task two
+- [x] Task one
+- [ ] Task two
 
 ### tilde
 
 Enables strikethrough text using `~~`.
 
 ~~Strikethrough text~~
-
