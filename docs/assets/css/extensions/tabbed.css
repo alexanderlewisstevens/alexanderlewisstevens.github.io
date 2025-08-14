@@ -28,14 +28,14 @@
   opacity: 0;
 }
 
-.tabbed-set input:nth-child(n+1) {
+.tabbed-set input:nth-child(n + 1) {
   color: #333333;
 }
 
-.tabbed-set input:nth-child(n+1):checked + label {
-    color: cyan !important;
+.tabbed-set input:nth-child(n + 1):checked + label {
+  color: cyan !important;
 }
 
-.tabbed-set input:nth-child(n+1):checked + label + .tabbed-content {
-    display: block;
+.tabbed-set input:nth-child(n + 1):checked + label + .tabbed-content {
+  display: block;
 }

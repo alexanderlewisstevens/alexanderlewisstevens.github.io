@@ -31,6 +31,7 @@ If you are not using Dev Containers, install these extensions:
 - **Makefile Tools** (`ms-vscode.makefile-tools`): Strongly recommended for running Makefile targets easily.
 
 Optional but helpful:
+
 - **Markdown All in One** (`yzhang.markdown-all-in-one`): For enhanced Markdown editing.
 - **Markdown Preview Enhanced** (`shd101wyy.markdown-preview-enhanced`): For advanced Markdown preview, including math.
 - **YAML** (`redhat.vscode-yaml`): For editing `mkdocs.yml` and other YAML files.
@@ -70,7 +71,6 @@ $$ e^{i\pi} + 1 = 0 $$
 
 <img width="393" alt="image" src="https://github.com/user-attachments/assets/0fd00338-3573-4731-b9c9-5d8104bf031d" />
 
-
 Use the sidebar to navigate through the sections.
 <img width="467" alt="image" src="https://github.com/user-attachments/assets/451ffc04-87e0-4c69-b4eb-105e38912dd4" />
 
@@ -79,6 +79,7 @@ Use the sidebar to navigate through the sections.
 To work with this project in a reproducible environment, follow these steps:
 
 1. **Clone the repository:**
+
    ```sh
    git clone https://github.com/your-username/your-repo.git
    cd your-repo

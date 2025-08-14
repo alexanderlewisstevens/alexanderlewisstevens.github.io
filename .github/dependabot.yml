@@ -15,12 +15,12 @@ updates:
     schedule:
       interval: "daily"
     labels:
-    - 'Type: Update (Dependency)'
-    - 'Target: Python (pip)'
+      - "Type: Update (Dependency)"
+      - "Target: Python (pip)"
   - package-ecosystem: "github-actions"
     directory: "/" # Location of package manifests
     schedule:
       interval: "daily"
     labels:
-    - 'Type: Update (Dependency)'
-    - 'Target: GitHub Actions'
+      - "Type: Update (Dependency)"
+      - "Target: GitHub Actions"

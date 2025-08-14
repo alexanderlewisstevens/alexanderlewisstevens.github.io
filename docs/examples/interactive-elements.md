@@ -26,7 +26,7 @@
 ## Details
 
 ??? example "Click to expand"
-    Hidden content inside a collapsible block.
+Hidden content inside a collapsible block.
 
 ## Emoji and Keys
 
