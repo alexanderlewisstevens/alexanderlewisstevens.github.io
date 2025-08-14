@@ -6,7 +6,6 @@ hide:
   - breadcrumbs
   - footer
   - title
-  - search
   - edit
   - next
   - previous
