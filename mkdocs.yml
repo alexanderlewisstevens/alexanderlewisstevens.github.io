@@ -29,7 +29,7 @@
 # +--------------------------------------------------------------------------------------------------------+
 site_name: MkDocs with Materials
 site_description: "A little bit of this and a little bit of that"
-site_author: "alexander.lewis.stevens@gmail.com"
+#site_author: "alexander.lewis.stevens@gmail.com"
 site_url: "https://alexanderlewisstevens.github.io/" # Uncomment to set a canonical URL
 
 # +--------------------------------------------------------------------------------------------------------+
@@ -44,8 +44,7 @@ site_url: "https://alexanderlewisstevens.github.io/" # Uncomment to set a canoni
 # | - https://www.mkdocs.org/user-guide/configuration/#copyright                                           |
 # |                                                                                                        |
 # +--------------------------------------------------------------------------------------------------------+
-copyright: |
-  &copy; Stevens
+#  &copy; Stevens
 
 # +--------------------------------------------------------------------------------------------------------+
 # |                                                                                                        |
@@ -169,25 +168,25 @@ theme:
     # | - https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/#color-scheme              |
     # |                                                                                                    |
     # +----------------------------------------------------------------------------------------------------+
-    scheme: "slate"
+    #scheme: "slate"
     # scheme: 'default'
     # scheme: 'palenight'
     # scheme: 'dracula'
-    # scheme: 'nord'
+    scheme: 'nord'
     # scheme: 'dark'
     # scheme: 'light'
 
     #primary: 'deep purple'
     #primary: 'indigo'
-    #primary: 'cyan'
-    primary: "amber"
+    primary: 'cyan'
+    #primary: "amber"
     # primary: 'pink'
     # primary: 'teal'
     # primary: 'lime'
     # primary: 'blue grey'
 
-    #accent: 'indigo'
-    accent: "pink"
+    accent: 'indigo'
+    #accent: "pink"
   # accent: 'orange'
   # accent: 'green'
   # accent: 'light blue'
