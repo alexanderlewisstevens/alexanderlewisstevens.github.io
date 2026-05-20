@@ -1,5 +1,5 @@
 {
-  "name": "Academic Pages",
+  "name": "Alex Stevens Website",
   "dockerComposeFile": "../docker-compose.yaml",
   "service": "jekyll-site",
   "workspaceFolder": "/usr/src/app",

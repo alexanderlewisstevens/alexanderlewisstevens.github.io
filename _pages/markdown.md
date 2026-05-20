@@ -19,6 +19,7 @@ redirect_from:
   * _portfolio/
   * _teaching/
   * _talks/
+* Standalone HTML drop folder: html/
 * Footer: _includes/footer.html
 * Static files (like PDFs): /files/
 * Profile image (can set in _config.yml): images/profile.png
@@ -26,7 +27,8 @@ redirect_from:
 ## Tips and hints
 
 * Name a file ".md" to have it render in markdown, name it ".html" to render in HTML.
-* Go to the [commit list](https://github.com/academicpages/academicpages.github.io/commits/master) (on your repo) to find the last version GitHub built with Jekyll. 
+* Put standalone `.html` files in `html/`; for example, `html/my-page.html` publishes at `/html/my-page.html`.
+* Go to this repository's GitHub Actions page to find the last version GitHub built with Jekyll.
   * Green check: successful build
   * Orange circle: building
   * Red X: error

@@ -1,101 +1,130 @@
-# Academic Pages
-**Academic Pages is a GitHub Pages template for personal and professional portfolio-oriented websites.**
+# alexanderlewisstevens.github.io
 
-![Academic Pages template example](images/themes/homepage-light.png "Academic Pages template example")
+Personal website for Alex Stevens, published with GitHub Pages at:
 
-# Getting Started
+https://alexanderlewisstevens.github.io/
 
-1. Register a GitHub account if you don't have one and confirm your e-mail (required!)
-1. Click the "Use this template" button in the top right.
-1. On the "New repository" page, enter your public repository name as "[your GitHub username].github.io", which will also be your website's URL.
-1. Edit site-wide configuration in `_config.yml` and double check that the `url` is the one that you just selected in the previous step and that `repository` reflects the correct path for your repository.
-1. Add your site content, upload any files (like PDFs, .zip files, etc.) to the `files/` directory. They will appear at https://[your GitHub username].github.io/files/example.pdf.
-1. Check status by going to the repository settings, in the "GitHub pages" section
-1. (Optional) Use the Jupyter notebooks or python scripts in the `markdown_generator` folder to generate markdown files for publications and talks from a TSV file.
+This site is built from the `main` branch using Jekyll and the Academic Pages theme. GitHub Pages rebuilds and republishes the site automatically whenever changes are pushed to `main`.
 
-See more info at https://academicpages.github.io/
+## Current Site Links
 
-### Additional Tutorials
+- Website: https://alexanderlewisstevens.github.io/
+- LinkedIn: https://www.linkedin.com/in/alex-stevens-02a492197
+- University of Denver profile: https://ritchieschool.du.edu/about/people/alex-l-stevens
+- Spectral Residue: https://spectralresidue.com/
+- NewsLens Research Dashboard: https://lab.spectralresidue.com/
 
-Additional tutorials for working with the Academic Pages template can be found at the following sites:
-- https://jayrobwilliams.com/posts/2020/06/academic-website/
+## HTML Drop Folder
 
-## Running locally
+The clear folder for standalone HTML files is:
 
-When you are initially working on your website, it is very useful to be able to preview the changes locally before pushing them to GitHub. To work locally you will need to:
-
-1. Clone the repository and made updates as detailed above.
-
-### Using a different IDE
-1. Make sure you have ruby-dev, bundler, and nodejs installed
-    
-    On most Linux distributions and [Windows Subsystem Linux](https://learn.microsoft.com/en-us/windows/wsl/about) the command is:
-    ```bash
-    sudo apt install ruby-dev ruby-bundler nodejs
-    ```
-    If you see error `Unable to locate package ruby-bundler`, `Unable to locate package nodejs `, run the following:
-    ```bash
-    sudo apt update && sudo apt upgrade -y
-    ```
-    then try running `sudo apt install ruby-dev ruby-bundler nodejs` again.
-
-    On MacOS the commands are:
-    ```bash
-    brew install ruby
-    brew install node
-    gem install bundler
-    ```
-1. Run `bundle install` to install ruby dependencies. If you get errors, delete Gemfile.lock and try again.
-
-    If you see file permission error like `Fetching bundler-2.6.3.gem ERROR:  While executing gem (Gem::FilePermissionError) You don't have write permissions for the /var/lib/gems/3.2.0 directory.` or `Bundler::PermissionError: There was an error while trying to write to /usr/local/bin.`
-    Install Gems Locally (Recommended):
-    ```bash
-    bundle config set --local path 'vendor/bundle'
-    ```
-    then try run `bundle install` again. If succeeded, you should see a folder called `vendor` and `.bundle`.
-
-1. Run `jekyll serve -l -H localhost` to generate the HTML and serve it from `localhost:4000` the local server will automatically rebuild and refresh the pages on change to Markdown (*.md) and HTML files, while changes to the core template and configuration (i.e., `_config.yml`) will require stopping and restarting Jekyll.
-    You may also try `bundle exec jekyll serve -l -H localhost` to ensure jekyll to use specific dependencies on your own local machine.
-
-If you are running on Linux it may be necessary to install some additional dependencies prior to being able to run locally: `sudo apt install build-essential gcc make`
-
-## Using Docker
-
-Working from a different OS, or just want to avoid installing dependencies? You can use the provided `Dockerfile` to build a container that will run the site for you if you have [Docker](https://www.docker.com/) installed.
-
-You can build and execute the container by running the following command in the repository:
-
-```bash
-chmod -R 777 .
-docker compose up
+```text
+html/
 ```
 
-You should now be able to access the website from `localhost:4000`.
+Any `.html` file placed in `html/` is published by GitHub Pages.
 
-### Using the DevContainer in VS Code
+Examples:
 
-If you are using [Visual Studio Code](https://code.visualstudio.com/) you can use the [Dev Container](https://code.visualstudio.com/docs/devcontainers/containers) that comes with this Repository. Normally VS Code detects that a development container configuration is available and asks you if you want to use the container. If this doesn't happen you can manually start the container by **F1->DevContainer: Reopen in Container**. This restarts your VS Code in the container and automatically hosts your academic page locally on http://localhost:4000. All changes will be updated live to that page after a few seconds.
+```text
+html/example.html        -> https://alexanderlewisstevens.github.io/html/example.html
+html/static-example.html -> https://alexanderlewisstevens.github.io/html/static-example.html
+html/my-page.html        -> https://alexanderlewisstevens.github.io/html/my-page.html
+```
 
-# Maintenance
+There are two supported styles:
 
-Bug reports and feature requests to the template should be [submitted via GitHub](https://github.com/academicpages/academicpages.github.io/issues/new/choose). For questions concerning how to style the template, please feel free to start a [new discussion on GitHub](https://github.com/academicpages/academicpages.github.io/discussions).
+1. Plain static HTML: add a normal `.html` file with no Jekyll front matter. GitHub Pages publishes it as-is.
+2. Jekyll-rendered HTML: add YAML front matter at the top so the file uses the site's layout.
 
-This repository was forked (then detached) by [Stuart Geiger](https://github.com/staeiou) from the [Minimal Mistakes Jekyll Theme](https://mmistakes.github.io/minimal-mistakes/), which is © 2016 Michael Rose and released under the MIT License (see LICENSE.md). It is currently being maintained by [Robert Zupko](https://github.com/rjzupkoii), and additional maintainers would be welcome.
+Example Jekyll-rendered HTML file:
 
-## Bugfixes and enhancements
-
-If you have bugfixes and enhancements that you would like to submit as a pull request, you will need to [fork](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo) this repository as opposed to using it as a template. This will also allow you to [synchronize your copy](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork) of the template to your fork as well.
-
-Unfortunately, one logistical issue with a template theme like Academic Pages that makes it a little tricky to get bug fixes and updates to the core theme. If you use this template and customize it, you will probably get merge conflicts if you attempt to synchronize, although [rebasing](https://git-scm.com/docs/git-rebase) the changes from this template will work along with manually [cherry picking](https://git-scm.com/docs/git-cherry-pick) the relevant commits. If you are not comfortable with the Git command line, you can save your various `.yml` configuration files and Markdown files, delete the repository, and fork it again. 
-
+```html
 ---
-<div align="center">
-    
-![pages-build-deployment](https://github.com/academicpages/academicpages.github.io/actions/workflows/pages/pages-build-deployment/badge.svg)
-[![GitHub contributors](https://img.shields.io/github/contributors/academicpages/academicpages.github.io.svg)](https://github.com/academicpages/academicpages.github.io/graphs/contributors)
-[![GitHub release](https://img.shields.io/github/v/release/academicpages/academicpages.github.io)](https://github.com/academicpages/academicpages.github.io/releases/latest)
-[![GitHub license](https://img.shields.io/github/license/academicpages/academicpages.github.io?color=blue)](https://github.com/academicpages/academicpages.github.io/blob/master/LICENSE)
+layout: single
+title: "My HTML Page"
+permalink: /html/my-page.html
+author_profile: true
+---
 
-[![GitHub stars](https://img.shields.io/github/stars/academicpages/academicpages.github.io)](https://github.com/academicpages/academicpages.github.io)
-[![GitHub forks](https://img.shields.io/github/forks/academicpages/academicpages.github.io)](https://github.com/academicpages/academicpages.github.io/fork)
-</div>
+<p>This page is rendered inside the site layout.</p>
+```
+
+The HTML landing page is `html/index.html`, and it is published at:
+
+https://alexanderlewisstevens.github.io/html/
+
+## Site Structure
+
+- `_config.yml`: site-wide settings, author information, theme settings, and plugin configuration.
+- `_data/navigation.yml`: top navigation links.
+- `_pages/`: main pages such as the homepage, CV, guide, talks, teaching, and publications index.
+- `_publications/`: publication entries.
+- `_talks/`: talk entries.
+- `_teaching/`: teaching entries.
+- `_portfolio/`: portfolio entries.
+- `html/`: standalone HTML drop folder.
+- `files/`: static downloadable files such as PDFs or ZIP files.
+- `images/`: profile image, theme images, and other image assets.
+- `.devcontainer/`: VS Code Dev Container configuration.
+- `Dockerfile` and `docker-compose.yaml`: local Jekyll preview environment.
+
+The blog, sitemap, and RSS feed have been intentionally removed from this site.
+
+## Local Development
+
+The recommended local workflow is Docker or the VS Code Dev Container. This avoids depending on the system Ruby version.
+
+### VS Code Dev Container
+
+Open the repository in VS Code and run:
+
+```text
+Dev Containers: Reopen in Container
+```
+
+The container starts Jekyll automatically and forwards:
+
+```text
+http://localhost:4000/
+```
+
+### Docker
+
+From the repository root:
+
+```bash
+docker compose up --build
+```
+
+For detached mode:
+
+```bash
+docker compose up --build -d
+```
+
+Then open:
+
+```text
+http://localhost:4000/
+```
+
+Jekyll watches the site files and regenerates pages when Markdown or HTML changes. If `_config.yml` changes, restart the container.
+
+## Deployment
+
+Push changes to `main`:
+
+```bash
+git push origin main
+```
+
+GitHub Pages builds and deploys automatically. Build status can be checked from the repository Actions page or with:
+
+```bash
+gh run list --branch main --limit 5
+```
+
+## Notes
+
+This repository started from the Academic Pages template, which is based on the Minimal Mistakes Jekyll theme.
