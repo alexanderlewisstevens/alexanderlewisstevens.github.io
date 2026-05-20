@@ -1,22 +1,28 @@
 ---
 permalink: /
-title: "Alex Stevens"
+title: "About"
 author_profile: true
 redirect_from: 
   - /about/
   - /about.html
 ---
 
+{% comment %}
+Small biography. The label is intentionally a code comment, not visible site copy.
+{% endcomment %}
+
 I am a Teaching Assistant Professor in Computer Science at the University of Denver. My work sits around math, theoretical computer science, graph theory, and teaching practices that make STEM classrooms more inclusive and reflective.
 
-This site collects publications, talks, teaching materials, project links, and standalone HTML pages.
+{% comment %}
+Only visitor-facing content belongs on the homepage. Repository mechanics such as
+the HTML drop folder remain documented in README.md and source comments.
+{% endcomment %}
 
-## Current Work
+## Selected Work
 
 - [Publications](/publications/) lists research publications and related academic writing.
 - [Teaching](/teaching/) collects teaching history and course materials.
 - [Portfolio](/portfolio/) highlights public projects and technical work.
-- [HTML Files](/html/) is the drop folder index for standalone `.html` files.
 
 ## External Projects
 

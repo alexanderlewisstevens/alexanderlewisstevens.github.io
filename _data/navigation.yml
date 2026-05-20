@@ -19,15 +19,14 @@ main:
     
   - title: "Portfolio"
     url: /portfolio/
-        
-  - title: "CV"
-    url: /cv/
-    
-  # - title: "CV"
-  #   url: /cv-json/
-    
-  - title: "Guide"
-    url: /markdown/
 
-  - title: "HTML Files"
-    url: /html/
+  # The CV page is intentionally hidden until the real public CV content is ready.
+  # - title: "CV"
+  #   url: /cv/
+
+  # Maintainer/setup pages are documented in README.md and should not be promoted
+  # in the public header.
+  # - title: "Guide"
+  #   url: /markdown/
+  # - title: "HTML Files"
+  #   url: /html/

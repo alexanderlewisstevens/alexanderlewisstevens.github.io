@@ -1,19 +1,22 @@
 ---
 layout: archive
-title: "HTML Drop Folder"
+title: "HTML Pages"
 permalink: /html/
 author_profile: true
 ---
 
 {% include base_path %}
 
-<p>The folder name is <code>html/</code>. Drop any <code>.html</code> file into that folder and GitHub Pages will publish it under <code>/html/</code>.</p>
+{% comment %}
+Maintainer note: this folder is the HTML drop folder. A file at
+html/my-page.html publishes at /html/my-page.html. Files with front matter are
+rendered by Jekyll; files without front matter are served as plain static HTML.
+Keep those mechanics in comments/README rather than visible site copy.
+{% endcomment %}
 
-<p>For example, <code>html/my-page.html</code> becomes <code>{{ base_path }}/html/my-page.html</code>.</p>
-
-<p>Files with YAML front matter are rendered by Jekyll with the site layout. Files without front matter are published as plain static HTML.</p>
+<p>Standalone HTML pages published with this site.</p>
 
 <ul>
-  <li><a href="{{ base_path }}/html/example.html">Jekyll-rendered HTML page</a></li>
+  <li><a href="{{ base_path }}/html/example.html">Example HTML page</a></li>
   <li><a href="{{ base_path }}/html/static-example.html">Static HTML page</a></li>
 </ul>

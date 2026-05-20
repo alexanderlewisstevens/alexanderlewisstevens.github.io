@@ -5,6 +5,9 @@ permalink: /html/example.html
 author_profile: true
 ---
 
-<p>This page lives in the <code>html/</code> drop folder at <code>html/example.html</code>. It is rendered by Jekyll with the site's normal layout.</p>
+{% comment %}
+Example of an HTML file with front matter. The implementation detail is kept in
+source comments so the public page can stay simple.
+{% endcomment %}
 
-<p>You can add more <code>.html</code> files to this folder. If a file has YAML front matter, Jekyll will process it; if it does not, GitHub Pages will publish it as a static HTML file.</p>
+<p>This page is rendered inside the site's normal layout.</p>

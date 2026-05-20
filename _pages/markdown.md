@@ -2,10 +2,17 @@
 permalink: /markdown/
 title: "Markdown"
 author_profile: true
+published: false
 redirect_from: 
   - /md/
   - /markdown.html
 ---
+
+{% comment %}
+This maintainer guide is kept in source for reference, but README.md is the
+public repository guide. Remove `published: false` only if this should become a
+visitor-facing page again.
+{% endcomment %}
 
 {% include toc %}
 

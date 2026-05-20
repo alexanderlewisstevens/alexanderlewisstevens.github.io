@@ -57,8 +57,8 @@ https://alexanderlewisstevens.github.io/html/
 ## Site Structure
 
 - `_config.yml`: site-wide settings, author information, theme settings, and plugin configuration.
-- `_data/navigation.yml`: top navigation links.
-- `_pages/`: main pages such as the homepage, CV, guide, talks, teaching, and publications index.
+- `_data/navigation.yml`: top navigation links. Public navigation currently shows Publications, Talks, Teaching, and Portfolio.
+- `_pages/`: main pages such as the homepage, talks, teaching, portfolio, and publications index.
 - `_publications/`: publication entries.
 - `_talks/`: talk entries.
 - `_teaching/`: teaching entries.
@@ -69,7 +69,7 @@ https://alexanderlewisstevens.github.io/html/
 - `.devcontainer/`: VS Code Dev Container configuration.
 - `Dockerfile` and `docker-compose.yaml`: local Jekyll preview environment.
 
-The blog, sitemap, and RSS feed have been intentionally removed from this site.
+The blog, sitemap, and RSS feed have been intentionally removed from this site. The template CV and Markdown guide are kept out of the public site until they have real visitor-facing content.
 
 ## Local Development
 
