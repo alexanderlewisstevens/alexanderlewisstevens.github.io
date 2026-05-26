@@ -1,0 +1,1541 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <link rel="icon" href="data:,">
+  <title>Part 1: Prefix Codes and Huffman Decoding</title>
+  <!--
+    Static hosting notes for instructors:
+    - This is a single-file activity. CSS, JavaScript, and SVG diagrams are inline.
+    - It can be uploaded to a static host such as GitHub Pages, Netlify, or a course website.
+    - The required lesson content does not depend on external websites.
+    - The required lesson content does not depend on external websites.
+    - Optional YouTube links are provided as ordinary timestamp links, not embedded players.
+  -->
+  <style>
+    :root {
+      --page: #f4f6f8;
+      --surface: #ffffff;
+      --surface-soft: #f9fbfc;
+      --text: #17212b;
+      --muted: #5b6673;
+      --line: #d8e0e8;
+      --accent: #0c6b68;
+      --accent-strong: #084b49;
+      --blue: #275f9f;
+      --green: #2f7d4f;
+      --gold: #9c6b14;
+      --red: #a43e35;
+      --code: #eef2f6;
+      --ok-bg: #e9f6ee;
+      --ok-text: #23633c;
+      --warn-bg: #fff4d9;
+      --warn-text: #71510a;
+      --bad-bg: #fdecea;
+      --bad-text: #8f2f28;
+      --shadow: 0 16px 38px rgba(23, 33, 43, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--page);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.55;
+    }
+
+    a {
+      color: var(--blue);
+    }
+
+    code,
+    .bits {
+      background: var(--code);
+      border-radius: 5px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      padding: 0.12rem 0.35rem;
+    }
+
+    main {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 64px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #ffffff 0%, #f7fbfb 62%, #eef5f2 100%);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      padding: 28px;
+    }
+
+    .eyebrow {
+      color: var(--accent-strong);
+      font-size: 0.86rem;
+      font-weight: 750;
+      letter-spacing: 0.08em;
+      margin: 0 0 8px;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    h3 {
+      letter-spacing: 0;
+      line-height: 1.2;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 4vw, 3.15rem);
+      margin: 0 0 12px;
+      max-width: 840px;
+    }
+
+    h2 {
+      font-size: 1.48rem;
+      margin: 0 0 12px;
+    }
+
+    h3 {
+      font-size: 1.08rem;
+      margin: 20px 0 8px;
+    }
+
+    p {
+      margin: 0 0 14px;
+    }
+
+    .lead {
+      color: var(--muted);
+      font-size: 1.06rem;
+      max-width: 880px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .hero-grid,
+    .two-col,
+    .three-col,
+    .workspace {
+      display: grid;
+      gap: 16px;
+    }
+
+    .hero-grid {
+      align-items: start;
+      grid-template-columns: minmax(0, 1.5fr) minmax(280px, 0.85fr);
+      margin-top: 22px;
+    }
+
+    .two-col {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .three-col {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .workspace {
+      grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.8fr);
+    }
+
+    .card,
+    .mini-card,
+    .callout,
+    .nav-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+
+    .card {
+      margin: 18px 0;
+      padding: 22px;
+    }
+
+    .mini-card,
+    .nav-card {
+      padding: 16px;
+    }
+
+    .mini-card h3,
+    .nav-card h2 {
+      margin-top: 0;
+    }
+
+    .callout {
+      border-left: 5px solid var(--accent);
+      margin: 14px 0;
+      padding: 14px 16px;
+    }
+
+    .callout.warn {
+      border-left-color: var(--gold);
+      background: #fffaf0;
+    }
+
+    .callout.project {
+      border-left-color: var(--blue);
+      background: #f2f7fd;
+    }
+
+    .callout strong:first-child {
+      color: var(--accent-strong);
+    }
+
+    .toc {
+      display: grid;
+      gap: 8px;
+      margin: 0;
+      padding: 0;
+    }
+
+    .toc li {
+      list-style: none;
+    }
+
+    .toc a {
+      align-items: center;
+      background: var(--surface-soft);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      color: var(--text);
+      display: flex;
+      justify-content: space-between;
+      padding: 9px 11px;
+      text-decoration: none;
+    }
+
+    .toc a:hover,
+    .toc a:focus {
+      border-color: var(--accent);
+      color: var(--accent-strong);
+    }
+
+    .tag {
+      background: #e8f1f1;
+      border-radius: 999px;
+      color: var(--accent-strong);
+      display: inline-block;
+      font-size: 0.82rem;
+      font-weight: 700;
+      margin: 0 6px 8px 0;
+      padding: 4px 9px;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      margin: 12px 0 16px;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    th,
+    td {
+      border: 1px solid var(--line);
+      padding: 9px 11px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #edf4f4;
+      font-weight: 750;
+    }
+
+    ol,
+    ul {
+      margin: 8px 0 0;
+      padding-left: 23px;
+    }
+
+    li {
+      margin: 5px 0;
+    }
+
+    .steps {
+      counter-reset: step;
+      display: grid;
+      gap: 9px;
+      margin: 12px 0 0;
+      padding: 0;
+    }
+
+    .steps li {
+      align-items: flex-start;
+      background: var(--surface-soft);
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      display: grid;
+      gap: 10px;
+      grid-template-columns: 34px 1fr;
+      list-style: none;
+      margin: 0;
+      padding: 11px;
+    }
+
+    .steps li::before {
+      align-items: center;
+      background: var(--accent);
+      border-radius: 999px;
+      color: #ffffff;
+      content: counter(step);
+      counter-increment: step;
+      display: inline-flex;
+      font-weight: 750;
+      height: 28px;
+      justify-content: center;
+      margin-top: 1px;
+      width: 28px;
+    }
+
+    label {
+      display: block;
+      font-weight: 750;
+      margin: 10px 0 6px;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    textarea {
+      background: #ffffff;
+      border: 1px solid #aeb9c5;
+      border-radius: 6px;
+      color: var(--text);
+      font: inherit;
+      padding: 9px 10px;
+      width: min(380px, 100%);
+    }
+
+    textarea {
+      min-height: 94px;
+      resize: vertical;
+      width: 100%;
+    }
+
+    input[type="radio"],
+    input[type="checkbox"] {
+      margin-right: 8px;
+      transform: translateY(1px);
+    }
+
+    button,
+    .button-link {
+      appearance: none;
+      background: var(--accent);
+      border: 0;
+      border-radius: 6px;
+      color: #ffffff;
+      cursor: pointer;
+      display: inline-block;
+      font: inherit;
+      font-weight: 750;
+      margin: 8px 8px 0 0;
+      padding: 9px 13px;
+      text-decoration: none;
+    }
+
+    button.secondary,
+    .button-link.secondary {
+      background: #ffffff;
+      border: 1px solid #98a6b5;
+      color: var(--text);
+    }
+
+    button:hover,
+    button:focus,
+    .button-link:hover,
+    .button-link:focus {
+      background: var(--accent-strong);
+      color: #ffffff;
+    }
+
+    button.secondary:hover,
+    button.secondary:focus,
+    .button-link.secondary:hover,
+    .button-link.secondary:focus {
+      background: #eef3f7;
+      color: var(--text);
+    }
+
+    .feedback {
+      border-radius: 6px;
+      margin-top: 10px;
+      padding: 10px 12px;
+    }
+
+    .feedback:empty {
+      display: none;
+    }
+
+    .feedback.ok {
+      background: var(--ok-bg);
+      color: var(--ok-text);
+    }
+
+    .feedback.warn {
+      background: var(--warn-bg);
+      color: var(--warn-text);
+    }
+
+    .feedback.bad {
+      background: var(--bad-bg);
+      color: var(--bad-text);
+    }
+
+    .choice {
+      background: var(--surface-soft);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      display: block;
+      margin: 8px 0;
+      padding: 9px 11px;
+    }
+
+    .tree-wrap,
+    .diagram-wrap {
+      overflow-x: auto;
+      margin: 10px 0 14px;
+    }
+
+    svg {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+
+    .diagram {
+      background: #fbfcfd;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+
+    .edge {
+      stroke: #687583;
+      stroke-linecap: round;
+      stroke-width: 2.6;
+    }
+
+    .edge.active {
+      stroke: var(--red);
+      stroke-width: 5;
+    }
+
+    .node circle {
+      fill: #ffffff;
+      stroke: #2f3d4c;
+      stroke-width: 2.2;
+    }
+
+    .node.leaf circle {
+      fill: #e4f4ee;
+      stroke: var(--green);
+      stroke-width: 2.6;
+    }
+
+    .node.active circle {
+      fill: #fff0b8;
+      stroke: var(--gold);
+      stroke-width: 3.2;
+    }
+
+    .node text,
+    .node-label {
+      fill: var(--text);
+      font-size: 16px;
+      font-weight: 750;
+      text-anchor: middle;
+      dominant-baseline: central;
+    }
+
+    .edge-label {
+      fill: var(--accent-strong);
+      font-size: 16px;
+      font-weight: 800;
+      text-anchor: middle;
+      dominant-baseline: central;
+    }
+
+    .bitstream {
+      background: #111827;
+      border-radius: 8px;
+      color: #d8f3dc;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 1.18rem;
+      letter-spacing: 0.18em;
+      line-height: 1.7;
+      margin: 10px 0;
+      overflow-wrap: anywhere;
+      padding: 12px;
+    }
+
+    .bitstream .current {
+      background: #f8c145;
+      border-radius: 4px;
+      color: #111827;
+      padding: 2px 1px 2px 4px;
+    }
+
+    .pixel-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      min-height: 37px;
+    }
+
+    .pixel {
+      border: 1px solid #25313d;
+      display: inline-block;
+      height: 30px;
+      width: 30px;
+    }
+
+    .swatch {
+      border: 1px solid #25313d;
+      display: inline-block;
+      height: 18px;
+      margin-right: 7px;
+      transform: translateY(3px);
+      width: 18px;
+    }
+
+    .status-grid {
+      display: grid;
+      gap: 8px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      margin: 10px 0;
+    }
+
+    .stat {
+      background: var(--surface-soft);
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      padding: 10px;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    .code-block {
+      background: #111827;
+      border-radius: 8px;
+      color: #e5edf5;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.9rem;
+      line-height: 1.55;
+      overflow-x: auto;
+      padding: 14px;
+      white-space: pre;
+    }
+
+    .keyword {
+      color: #93c5fd;
+    }
+
+    .string {
+      color: #bef264;
+    }
+
+    .comment {
+      color: #9ca3af;
+    }
+
+    .chapter-block {
+      border-top: 1px solid var(--line);
+      margin-top: 22px;
+      padding-top: 20px;
+    }
+
+    .chapter-meta {
+      align-items: center;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .time-link {
+      background: #eef3f7;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--text);
+      display: inline-block;
+      font-size: 0.86rem;
+      font-weight: 750;
+      padding: 4px 9px;
+      text-decoration: none;
+    }
+
+    .practice-box {
+      background: var(--surface-soft);
+      border-left: 5px solid var(--green);
+      margin-top: 12px;
+      padding: 12px 14px;
+    }
+
+    .practice-box label:first-child {
+      margin-top: 0;
+    }
+
+    .checklist {
+      display: grid;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .checklist label {
+      align-items: flex-start;
+      background: var(--surface-soft);
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      display: flex;
+      font-weight: 500;
+      gap: 6px;
+      margin: 0;
+      padding: 9px 11px;
+    }
+
+    .footer-note {
+      color: var(--muted);
+      font-size: 0.92rem;
+      margin-top: 24px;
+      text-align: center;
+    }
+
+    @media (max-width: 860px) {
+      main {
+        width: min(100% - 20px, 1120px);
+        padding-top: 16px;
+      }
+
+      .hero,
+      .card {
+        padding: 17px;
+      }
+
+      .hero-grid,
+      .two-col,
+      .three-col,
+      .workspace,
+      .status-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media print {
+      body {
+        background: #ffffff;
+        color: #000000;
+        font-size: 11pt;
+      }
+
+      main {
+        width: 100%;
+        padding: 0;
+      }
+
+      .hero,
+      .card,
+      .mini-card,
+      .callout {
+        box-shadow: none;
+        break-inside: avoid;
+      }
+
+      button,
+      input,
+      textarea,
+      .nav-card,
+      .hero-actions,
+      .feedback:empty {
+        display: none;
+      }
+
+      a {
+        color: #000000;
+        text-decoration: underline;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header class="hero">
+      <p class="eyebrow">Part 1: standalone activity</p>
+      <h1>Prefix Codes and Huffman Decoding</h1>
+      <p class="lead">Use this page to build the ideas needed for Huffman decoding. The required explanations and practice questions are self-contained; the video at the top is optional.</p>
+      <div class="hero-actions">
+        <a class="button-link" href="#fixed-length">Start Activity</a>
+        <a class="button-link secondary" href="#tree-codebooks">Review Binary Trees</a>
+        <a class="button-link secondary" href="#decode-walk">Try Decoder Walk</a>
+      </div>
+      <div class="hero-grid">
+        <section class="mini-card">
+          <h3>How to work through this page</h3>
+          <ul>
+            <li>Read each short explanation.</li>
+            <li>Study the worked example in that section.</li>
+            <li>Answer the practice questions directly below it.</li>
+            <li>Finish by checking that you can trace bits through a tree.</li>
+          </ul>
+        </section>
+        <nav class="nav-card" aria-label="Page sections">
+          <h2>Sections</h2>
+          <ol class="toc">
+            <li><a href="#videos">Optional Video <span>watch</span></a></li>
+            <li><a href="#fixed-length">Compression and Ambiguity <span>1</span></a></li>
+            <li><a href="#frequent-symbols">Frequent Symbols <span>2</span></a></li>
+            <li><a href="#prefix-free">Prefix-Free Codes <span>3</span></a></li>
+            <li><a href="#tree-codebooks">Trees as Codebooks <span>4</span></a></li>
+            <li><a href="#decode-walk">Decoder Walk <span>5</span></a></li>
+            <li><a href="#weighted-cost">Weighted Cost <span>6</span></a></li>
+            <li><a href="#lossy-binning">Lossy Binning <span>7</span></a></li>
+            <li><a href="#project-bridge">Project Bridge <span>8</span></a></li>
+            <li><a href="#references">References <span>9</span></a></li>
+            <li><a href="#readiness">Readiness Check <span>end</span></a></li>
+          </ol>
+        </nav>
+      </div>
+    </header>
+
+    <section class="card" id="videos">
+      <h2>Optional Video</h2>
+      <p>I think this is a fun video to watch, but it is not necessary for completing the activity. Everything you need for the examples and practice questions appears in the text below.</p>
+      <p>Use the timestamp links if you want another explanation before or after trying a section. The video is linked instead of embedded so this page remains easy to host anywhere.</p>
+      <div class="two-col">
+        <div class="mini-card">
+          <div class="chapter-meta">
+            <a class="time-link" href="https://www.youtube.com/watch?v=B3y0RsVCyrw&t=0s" target="_blank" rel="noopener">0:00-5:31</a>
+            <span class="tag">optional</span>
+          </div>
+          <h3>Compression and Ambiguity</h3>
+          <p>The setup for lossless compression and the need for a decoder to recover one clear original message.</p>
+        </div>
+        <div class="mini-card">
+          <div class="chapter-meta">
+            <a class="time-link" href="https://www.youtube.com/watch?v=B3y0RsVCyrw&t=858s" target="_blank" rel="noopener">14:18-16:20</a>
+            <span class="tag">optional</span>
+          </div>
+          <h3>Frequent Symbols</h3>
+          <p>Why shorter codes help most when they are assigned to symbols that appear often.</p>
+        </div>
+        <div class="mini-card">
+          <div class="chapter-meta">
+            <a class="time-link" href="https://www.youtube.com/watch?v=B3y0RsVCyrw&t=1091s" target="_blank" rel="noopener">18:11-20:14</a>
+            <span class="tag">optional</span>
+          </div>
+          <h3>Prefix-Free Trees</h3>
+          <p>How paths in a binary tree become prefix-free codes and support left-to-right decoding.</p>
+        </div>
+        <div class="mini-card">
+          <div class="chapter-meta">
+            <a class="time-link" href="https://www.youtube.com/watch?v=B3y0RsVCyrw&t=1215s" target="_blank" rel="noopener">20:15-22:37</a>
+            <span class="tag">optional</span>
+          </div>
+          <h3>Weighted Cost</h3>
+          <p>How code length and frequency combine into the total number of bits used.</p>
+        </div>
+        <div class="mini-card">
+          <div class="chapter-meta">
+            <a class="time-link" href="https://www.youtube.com/watch?v=B3y0RsVCyrw&t=1358s" target="_blank" rel="noopener">22:38-27:45</a>
+            <span class="tag">preview</span>
+          </div>
+          <h3>Building the Tree</h3>
+          <p>A preview of the construction algorithm. This is useful context, but the first project gives you the tree.</p>
+        </div>
+      </div>
+      <h3>Key Terms</h3>
+      <p>The rest of the page defines and uses these terms without requiring the video.</p>
+      <div class="three-col">
+        <div class="mini-card">
+          <h3>Symbol</h3>
+          <p>A unit of data being encoded. In examples this might be a letter. In the project it will be an RGB pixel color.</p>
+        </div>
+        <div class="mini-card">
+          <h3>Code</h3>
+          <p>The binary string assigned to a symbol. For example, <code>A = 0</code> or <code>blue = 11</code>.</p>
+        </div>
+        <div class="mini-card">
+          <h3>Leaf</h3>
+          <p>A tree node with a symbol. Reaching a leaf tells the decoder that one complete symbol has been found.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" id="fixed-length">
+      <h2>1. Compression, Fixed-Length Codes, and Ambiguity</h2>
+      <p>Computers store data as bits. If every symbol uses the same number of bits, decoding is simple because the decoder can split the bitstring into equal-sized chunks. Compression becomes possible when common symbols use shorter bitstrings and rare symbols use longer bitstrings.</p>
+      <p>A fixed-length code gives every symbol the same number of bits. With four symbols, two bits are enough because the possible two-bit strings are <code>00</code>, <code>01</code>, <code>10</code>, and <code>11</code>.</p>
+      <div class="table-wrap">
+        <table aria-label="Fixed-length codebook">
+          <thead>
+            <tr><th>Symbol</th><th>Code</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>A</td><td><code>00</code></td></tr>
+            <tr><td>B</td><td><code>01</code></td></tr>
+            <tr><td>C</td><td><code>10</code></td></tr>
+            <tr><td>D</td><td><code>11</code></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout">
+        <p><strong>Example.</strong> To encode <code>BAD</code>, replace each character with its code: B is <code>01</code>, A is <code>00</code>, and D is <code>11</code>. The encoded bitstring is <code>010011</code>.</p>
+        <p>Because each character costs 2 bits, this three-character message costs <code>3 x 2 = 6</code> bits.</p>
+      </div>
+      <div class="practice-box">
+        <label for="fixed-answer">Practice. With A=<code>00</code>, B=<code>01</code>, C=<code>10</code>, and D=<code>11</code>, encode <code>ABCD</code>.</label>
+        <input id="fixed-answer" type="text" inputmode="numeric" autocomplete="off" placeholder="Type a bitstring">
+        <button type="button" id="fixed-check">Check Answer</button>
+        <div id="fixed-feedback" class="feedback" aria-live="polite"></div>
+      </div>
+      <h3>Why variable-length codes can be ambiguous</h3>
+      <p>Variable-length codes are not automatically safe. If one complete code is the beginning of another complete code, a decoder may not know where to stop.</p>
+      <div class="table-wrap">
+        <table aria-label="Ambiguous variable-length codebook">
+          <thead>
+            <tr><th>Symbol</th><th>Code</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>A</td><td><code>0</code></td></tr>
+            <tr><td>B</td><td><code>01</code></td></tr>
+            <tr><td>C</td><td><code>10</code></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>The code for A, <code>0</code>, is the beginning of the code for B, <code>01</code>. That creates ambiguity.</p>
+      <div class="practice-box">
+        <p><strong>Practice.</strong> If one encoded bitstring can decode into two different messages, which requirement has failed?</p>
+        <label class="choice"><input type="radio" name="video-unique-choice" value="fixed">The code is not fixed length.</label>
+        <label class="choice"><input type="radio" name="video-unique-choice" value="unique">The code is not uniquely decodable.</label>
+        <label class="choice"><input type="radio" name="video-unique-choice" value="binary">The code is not binary.</label>
+        <button type="button" id="video-unique-check">Check Answer</button>
+        <div id="video-unique-feedback" class="feedback" aria-live="polite"></div>
+      </div>
+      <div class="practice-box">
+        <p><strong>Practice.</strong> With A=<code>0</code>, B=<code>01</code>, and C=<code>10</code>, the bitstring <code>010</code> is ambiguous.</p>
+        <button type="button" id="ambiguity-reveal">Reveal the two decodings of <code>010</code></button>
+        <div id="ambiguity-feedback" class="feedback" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section class="card" id="frequent-symbols">
+      <h2>2. Frequent Symbols Should Usually Have Shorter Codes</h2>
+      <p>Unequal frequencies make fixed-length codes wasteful. A shorter code helps most when it belongs to a symbol that appears often.</p>
+      <div class="callout">
+        <p><strong>Example.</strong> Suppose A appears 60 times and B appears 5 times. Saving one bit on A saves 60 bits total, but saving one bit on B saves only 5 bits total. This is why frequent symbols usually belong closer to the root.</p>
+      </div>
+      <div class="practice-box">
+        <label for="video-frequency-answer">Practice. If symbol <code>A</code> appears 60 times and symbol <code>B</code> appears 5 times, which symbol should usually receive the shorter code?</label>
+        <input id="video-frequency-answer" type="text" autocomplete="off" placeholder="Type A or B">
+        <button type="button" id="video-frequency-check">Check Answer</button>
+        <div id="video-frequency-feedback" class="feedback" aria-live="polite"></div>
+      </div>
+      <div class="practice-box">
+        <p><strong>Practice.</strong> Using frequencies A=50, B=25, C=15, and D=10, which codebook is better?</p>
+        <p><strong>Codebook 1:</strong> A=<code>0</code>, B=<code>10</code>, C=<code>110</code>, D=<code>111</code></p>
+        <p><strong>Codebook 2:</strong> A=<code>00</code>, B=<code>01</code>, C=<code>10</code>, D=<code>11</code></p>
+        <label class="choice"><input type="radio" name="codebook-choice" value="1">Codebook 1, because A is most frequent and has the shortest code.</label>
+        <label class="choice"><input type="radio" name="codebook-choice" value="2">Codebook 2, because equal-length codes are always better.</label>
+        <label class="choice"><input type="radio" name="codebook-choice" value="3">They are the same because both use binary strings.</label>
+        <button type="button" id="compare-check">Check Answer</button>
+        <div id="compare-feedback" class="feedback" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section class="card" id="prefix-free">
+      <h2>3. Prefix-Free Codes Come from Tree Paths</h2>
+      <p>The problem with variable-length codes is that the decoder needs a clean stopping rule. A prefix-free codebook solves this problem.</p>
+      <p>A codebook is <strong>prefix-free</strong> if no symbol's complete code is the beginning of another symbol's complete code. Prefix-free codes can be decoded from left to right without separators.</p>
+      <div class="table-wrap">
+        <table aria-label="Prefix-free codebook">
+          <thead>
+            <tr><th>Symbol</th><th>Code</th><th>Length</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>A</td><td><code>0</code></td><td>1</td></tr>
+            <tr><td>B</td><td><code>10</code></td><td>2</td></tr>
+            <tr><td>C</td><td><code>110</code></td><td>3</td></tr>
+            <tr><td>D</td><td><code>111</code></td><td>3</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout">
+        <p><strong>Example.</strong> Decode <code>0100</code> from left to right. The first <code>0</code> is A. The next bits <code>10</code> are B. The final <code>0</code> is A. So <code>0100</code> decodes to <code>ABA</code>.</p>
+      </div>
+      <div class="practice-box">
+        <label for="prefix-answer">Practice. Using A=<code>0</code>, B=<code>10</code>, C=<code>110</code>, and D=<code>111</code>, decode <code>0110111100</code>.</label>
+        <input id="prefix-answer" type="text" autocomplete="off" placeholder="Type the decoded message">
+        <button type="button" id="prefix-check">Check Answer</button>
+        <div id="prefix-feedback" class="feedback" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section class="card" id="tree-codebooks">
+      <h2>4. Binary Trees as Codebooks</h2>
+      <p>Binary trees give a visual way to define prefix-free codes. Starting at the root, each left edge appends <code>0</code> and each right edge appends <code>1</code>. A symbol's code is the path from the root to its leaf.</p>
+      <div class="diagram-wrap">
+        <svg class="diagram" width="760" height="360" viewBox="0 0 760 360" role="img" aria-labelledby="tree-title tree-desc">
+          <title id="tree-title">Encoding tree for A, B, C, and D</title>
+          <desc id="tree-desc">The root has A as its left child and an internal node as its right child. The internal node has B as its left child and another internal node as its right child. The final internal node has C as its left child and D as its right child.</desc>
+          <line class="edge" x1="380" y1="44" x2="195" y2="132"></line>
+          <line class="edge" x1="380" y1="44" x2="545" y2="132"></line>
+          <line class="edge" x1="545" y1="132" x2="455" y2="224"></line>
+          <line class="edge" x1="545" y1="132" x2="640" y2="224"></line>
+          <line class="edge" x1="640" y1="224" x2="585" y2="314"></line>
+          <line class="edge" x1="640" y1="224" x2="705" y2="314"></line>
+          <text class="edge-label" x="288" y="76">0</text>
+          <text class="edge-label" x="470" y="76">1</text>
+          <text class="edge-label" x="498" y="170">0</text>
+          <text class="edge-label" x="595" y="170">1</text>
+          <text class="edge-label" x="609" y="264">0</text>
+          <text class="edge-label" x="680" y="264">1</text>
+          <g class="node"><circle cx="380" cy="44" r="27"></circle><text x="380" y="44">root</text></g>
+          <g class="node leaf"><circle cx="195" cy="132" r="29"></circle><text x="195" y="132">A</text></g>
+          <g class="node"><circle cx="545" cy="132" r="27"></circle><text x="545" y="132">node</text></g>
+          <g class="node leaf"><circle cx="455" cy="224" r="29"></circle><text x="455" y="224">B</text></g>
+          <g class="node"><circle cx="640" cy="224" r="27"></circle><text x="640" y="224">node</text></g>
+          <g class="node leaf"><circle cx="585" cy="314" r="29"></circle><text x="585" y="314">C</text></g>
+          <g class="node leaf"><circle cx="705" cy="314" r="29"></circle><text x="705" y="314">D</text></g>
+        </svg>
+      </div>
+      <div class="two-col">
+        <div>
+          <h3>Derived Code Table</h3>
+          <div class="table-wrap">
+            <table aria-label="Codes derived from the tree">
+              <thead>
+                <tr><th>Symbol</th><th>Path</th><th>Code</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>A</td><td>left</td><td><code>0</code></td></tr>
+                <tr><td>B</td><td>right, left</td><td><code>10</code></td></tr>
+                <tr><td>C</td><td>right, right, left</td><td><code>110</code></td></tr>
+                <tr><td>D</td><td>right, right, right</td><td><code>111</code></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="callout">
+          <p><strong>Why the tree is prefix-free.</strong> Symbols only appear at leaves. If A is a leaf, the path to A stops there; no longer symbol can continue below A. That is why a leaf-based codebook avoids the ambiguity from Section 2.</p>
+        </div>
+      </div>
+      <div class="practice-box">
+        <label for="video-tree-answer">Practice. Using <code>red=0</code>, <code>green=10</code>, <code>blue=110</code>, and <code>gold=111</code>, decode <code>010111</code>.</label>
+        <input id="video-tree-answer" type="text" autocomplete="off" placeholder="Type the color names">
+        <button type="button" id="video-tree-check">Check Answer</button>
+        <div id="video-tree-feedback" class="feedback" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section class="card" id="decode-walk">
+      <h2>5. Interactive Decoder Walk</h2>
+      <p>Use the stepper to see the project idea in miniature. A <code>0</code> moves left. A <code>1</code> moves right. When the walk reaches a leaf, one symbol is decoded and the walk returns to the root.</p>
+      <div class="workspace">
+        <section>
+          <div class="tree-wrap">
+            <svg class="diagram" width="720" height="320" viewBox="0 0 720 320" aria-label="Small decoding tree with red, green, blue, and gold leaves">
+              <line id="walk-edge-root-red" class="edge" x1="360" y1="45" x2="170" y2="145"></line>
+              <line id="walk-edge-root-inner" class="edge" x1="360" y1="45" x2="530" y2="145"></line>
+              <line id="walk-edge-inner-green" class="edge" x1="530" y1="145" x2="435" y2="245"></line>
+              <line id="walk-edge-inner-inner" class="edge" x1="530" y1="145" x2="620" y2="245"></line>
+              <line id="walk-edge-inner-blue" class="edge" x1="620" y1="245" x2="565" y2="300"></line>
+              <line id="walk-edge-inner-gold" class="edge" x1="620" y1="245" x2="685" y2="300"></line>
+              <text class="edge-label" x="255" y="85">0</text>
+              <text class="edge-label" x="450" y="85">1</text>
+              <text class="edge-label" x="482" y="190">0</text>
+              <text class="edge-label" x="579" y="190">1</text>
+              <text class="edge-label" x="590" y="278">0</text>
+              <text class="edge-label" x="660" y="278">1</text>
+              <g id="walk-root" class="node active"><circle cx="360" cy="45" r="29"></circle><text x="360" y="45">root</text></g>
+              <g id="walk-red" class="node leaf"><circle cx="170" cy="145" r="34"></circle><text x="170" y="145">red</text></g>
+              <g id="walk-inner" class="node"><circle cx="530" cy="145" r="29"></circle><text x="530" y="145">node</text></g>
+              <g id="walk-green" class="node leaf"><circle cx="435" cy="245" r="38"></circle><text x="435" y="245">green</text></g>
+              <g id="walk-inner-2" class="node"><circle cx="620" cy="245" r="29"></circle><text x="620" y="245">node</text></g>
+              <g id="walk-blue" class="node leaf"><circle cx="565" cy="300" r="31"></circle><text x="565" y="300">blue</text></g>
+              <g id="walk-gold" class="node leaf"><circle cx="685" cy="300" r="31"></circle><text x="685" y="300">gold</text></g>
+            </svg>
+          </div>
+        </section>
+        <aside class="mini-card">
+          <h3>Stepper</h3>
+          <label for="walk-bits">Bitstring</label>
+          <input id="walk-bits" type="text" inputmode="numeric" value="0101101110">
+          <button type="button" id="walk-load">Load Bits</button>
+          <button type="button" id="walk-step">Step</button>
+          <button type="button" id="walk-reset" class="secondary">Reset</button>
+          <div id="walk-stream" class="bitstream" aria-live="polite"></div>
+          <div class="status-grid">
+            <div class="stat"><strong>Status</strong><span id="walk-status">at root</span></div>
+            <div class="stat"><strong>Current path</strong><span id="walk-path">(root)</span></div>
+            <div class="stat"><strong>Current depth</strong><span id="walk-depth">0</span></div>
+            <div class="stat"><strong>Last decoded</strong><span id="walk-last">none yet</span></div>
+          </div>
+          <p><strong>Decoded symbols</strong></p>
+          <div id="walk-pixels" class="pixel-row"></div>
+          <ol id="walk-output"></ol>
+        </aside>
+      </div>
+    </section>
+
+    <section class="card" id="weighted-cost">
+      <h2>6. Frequency and Weighted Path Length</h2>
+      <p>Code length is the same thing as tree depth. A symbol at depth 1 costs 1 bit each time it appears. A symbol at depth 3 costs 3 bits each time it appears.</p>
+      <p>Compression depends on how often each code is used. The cost contribution for one symbol is <code>frequency x code length</code>. The total weighted path length is the sum of those contributions.</p>
+      <div class="table-wrap">
+        <table aria-label="Weighted path length table">
+          <thead>
+            <tr>
+              <th>Symbol</th>
+              <th>Frequency</th>
+              <th>Code</th>
+              <th>Code Length</th>
+              <th>Frequency x Length</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>A</td><td>50</td><td><code>0</code></td><td>1</td><td>50</td></tr>
+            <tr><td>B</td><td>25</td><td><code>10</code></td><td>2</td><td>50</td></tr>
+            <tr><td>C</td><td>15</td><td><code>110</code></td><td>3</td><td>45</td></tr>
+            <tr><td>D</td><td>10</td><td><code>111</code></td><td>3</td><td>30</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p><strong>Total cost:</strong> <code>50 + 50 + 45 + 30 = 175</code> bits per 100 symbols.</p>
+      <p><strong>Average cost:</strong> <code>175 / 100 = 1.75</code> bits per symbol.</p>
+      <div class="practice-box">
+        <label for="video-cost-answer">Practice. If <code>X</code> appears 8 times at depth 1 and <code>Y</code> appears 2 times at depth 3, what is the total weighted cost?</label>
+        <input id="video-cost-answer" type="number" min="0" autocomplete="off" placeholder="Type a number">
+        <button type="button" id="video-cost-check">Check Answer</button>
+        <div id="video-cost-feedback" class="feedback" aria-live="polite"></div>
+      </div>
+      <div class="practice-box">
+        <h3>Recalculate with new frequencies</h3>
+        <p>The code lengths stay fixed as A=1, B=2, C=3, and D=3.</p>
+        <div class="two-col">
+          <div><label for="freq-a">A frequency</label><input id="freq-a" type="number" min="0" step="1" value="50"></div>
+          <div><label for="freq-b">B frequency</label><input id="freq-b" type="number" min="0" step="1" value="25"></div>
+          <div><label for="freq-c">C frequency</label><input id="freq-c" type="number" min="0" step="1" value="15"></div>
+          <div><label for="freq-d">D frequency</label><input id="freq-d" type="number" min="0" step="1" value="10"></div>
+        </div>
+        <button type="button" id="cost-calc">Recalculate Cost</button>
+        <div id="cost-feedback" class="feedback ok" aria-live="polite">Total cost: 175 bits. Average cost: 1.75 bits per symbol.</div>
+      </div>
+    </section>
+
+    <section class="card" id="lossy-binning">
+      <h2>7. Lossy Binning Before Huffman Coding</h2>
+      <p>Huffman coding is lossless for the symbols it receives. If the symbols are exact RGB pixels, then decoding should recover those exact RGB pixels.</p>
+      <p>Image compression can also include a separate step before Huffman coding: nearby colors are placed in the same bin. This is lossy because the original colors are rounded. After that rounding, Huffman coding can still decode the binned image exactly.</p>
+      <div class="callout">
+        <p><strong>Example.</strong> Dropping 4 low-order bits from each color channel keeps the rough color and removes small differences. The value <code>213</code> has binary form <code>11010101</code>. Keeping the top four bits gives <code>1101</code>, then padding with zeros gives <code>11010000</code>, which is <code>208</code>.</p>
+        <p>So <code>(213, 66, 73)</code> becomes <code>(208, 64, 64)</code>.</p>
+      </div>
+      <div class="two-col">
+        <section class="mini-card">
+          <h3>Lossless symbols</h3>
+          <p>Small color differences stay separate, so the tree needs more leaves.</p>
+          <ul>
+            <li><span class="swatch" style="background: rgb(210, 64, 70)"></span><code>(210, 64, 70)</code></li>
+            <li><span class="swatch" style="background: rgb(213, 66, 73)"></span><code>(213, 66, 73)</code></li>
+            <li><span class="swatch" style="background: rgb(218, 71, 69)"></span><code>(218, 71, 69)</code></li>
+            <li><span class="swatch" style="background: rgb(221, 78, 74)"></span><code>(221, 78, 74)</code></li>
+            <li><span class="swatch" style="background: rgb(209, 70, 76)"></span><code>(209, 70, 76)</code></li>
+            <li><span class="swatch" style="background: rgb(216, 69, 67)"></span><code>(216, 69, 67)</code></li>
+            <li><span class="swatch" style="background: rgb(42, 120, 202)"></span><code>(42, 120, 202)</code></li>
+            <li><span class="swatch" style="background: rgb(244, 202, 62)"></span><code>(244, 202, 62)</code></li>
+          </ul>
+        </section>
+        <section class="mini-card">
+          <h3>Lossy-binned symbols</h3>
+          <p>Nearby colors collapse into one symbol, so the tree can be smaller.</p>
+          <ul>
+            <li><span class="swatch" style="background: rgb(208, 64, 64)"></span><code>(208, 64, 64)</code> for six red-like pixels</li>
+            <li><span class="swatch" style="background: rgb(32, 112, 192)"></span><code>(32, 112, 192)</code> for one blue pixel</li>
+            <li><span class="swatch" style="background: rgb(240, 192, 48)"></span><code>(240, 192, 48)</code> for one gold pixel</li>
+          </ul>
+        </section>
+      </div>
+      <div class="table-wrap">
+        <table aria-label="Lossless and lossy Huffman comparison">
+          <thead>
+            <tr>
+              <th>Version</th>
+              <th>What counts as a symbol</th>
+              <th>Tree leaves</th>
+              <th>Deepest leaf</th>
+              <th>Average code length</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Lossless</td><td>Exact RGB pixels</td><td>8</td><td>3</td><td>3.00 bits per pixel</td></tr>
+            <tr><td>Lossy-binned</td><td>Rounded RGB pixels</td><td>3</td><td>2</td><td>1.25 bits per pixel</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>The smaller tree does not mean Huffman forgot information. The information was simplified before Huffman coding began. The decoded lossy image should match the binned image exactly, not the original image exactly.</p>
+      <div class="practice-box">
+        <label for="binning-pixel-answer">Practice. Drop 4 low-order bits from each channel in <code>(213, 66, 73)</code>. What binned RGB value do you get?</label>
+        <input id="binning-pixel-answer" type="text" autocomplete="off" placeholder="Example: 208, 64, 64">
+        <button type="button" id="binning-pixel-check">Check Answer</button>
+        <div id="binning-pixel-feedback" class="feedback" aria-live="polite"></div>
+      </div>
+      <div class="practice-box">
+        <p><strong>Practice.</strong> Which version is more likely to have fewer leaves in its Huffman tree?</p>
+        <label class="choice"><input type="radio" name="binning-choice" value="lossless">The lossless exact-color version.</label>
+        <label class="choice"><input type="radio" name="binning-choice" value="lossy">The lossy-binned version.</label>
+        <label class="choice"><input type="radio" name="binning-choice" value="same">They must always have the same number of leaves.</label>
+        <button type="button" id="binning-choice-check">Check Answer</button>
+        <div id="binning-choice-feedback" class="feedback" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section class="card" id="project-bridge">
+      <h2>8. How This Connects to the Project</h2>
+      <p>The full Huffman construction algorithm repeatedly combines the two lowest-frequency items. That idea is useful later, but it is not required for the first decoding project.</p>
+      <div class="practice-box">
+        <p><strong>Practice.</strong> Frequencies are <code>A=40</code>, <code>B=20</code>, <code>C=15</code>, and <code>D=5</code>. Which two symbols would be combined first?</p>
+        <label class="choice"><input type="radio" name="video-merge-choice" value="ab">A and B</label>
+        <label class="choice"><input type="radio" name="video-merge-choice" value="bc">B and C</label>
+        <label class="choice"><input type="radio" name="video-merge-choice" value="cd">C and D</label>
+        <button type="button" id="video-merge-check">Check Answer</button>
+        <div id="video-merge-feedback" class="feedback" aria-live="polite"></div>
+      </div>
+      <p>In the project, each decoded symbol is an RGB pixel such as <code>(128, 64, 0)</code>. The starter files give you the tree and the compressed bitstring. Your job is to write the decoder that walks the tree and reconstructs the image.</p>
+      <div class="callout project">
+        <p><strong>Important scope.</strong> You do not need to build the Huffman tree in this project. You do not need a heap or priority queue yet. You are practicing how to decode with a tree that has already been built.</p>
+      </div>
+      <div class="two-col">
+        <section>
+          <h3>Decoder algorithm</h3>
+          <ol class="steps">
+            <li><span>Start at the root of the provided tree.</span></li>
+            <li><span>Read one bit from the encoded bitstring.</span></li>
+            <li><span>Move left for <code>0</code> and right for <code>1</code>.</span></li>
+            <li><span>When you reach a leaf, append that leaf's pixel to the output.</span></li>
+            <li><span>Return to the root and continue with the next bit.</span></li>
+            <li><span>Raise an error for invalid bits or an unfinished path.</span></li>
+          </ol>
+        </section>
+        <section>
+          <h3>Project vocabulary</h3>
+          <ul>
+            <li><strong>Tree height:</strong> the length of the deepest root-to-leaf path.</li>
+            <li><strong>Node depth:</strong> the number of edges from the root to that node.</li>
+            <li><strong>Pixel count:</strong> should match <code>width x height</code>.</li>
+            <li><strong>Checksum:</strong> a fingerprint used to verify that the decoded pixels are correct.</li>
+            <li><strong>Compression ratio:</strong> encoded size divided by original size.</li>
+          </ul>
+        </section>
+      </div>
+      <h3>File paths and hashmap counts</h3>
+      <p>The starter code expects all data files to be next to your Python script. Use <code>pathlib.Path</code> so the script works even when run from a different working directory.</p>
+      <div class="two-col">
+        <pre class="code-block"><span class="keyword">from</span> pathlib <span class="keyword">import</span> Path
+
+here = Path(__file__).resolve().parent
+bits_path = here / <span class="string">"encoded_image_bits.txt"</span>
+bits = bits_path.read_text(encoding=<span class="string">"utf-8"</span>)</pre>
+        <pre class="code-block">counts = {}
+<span class="keyword">for</span> pixel <span class="keyword">in</span> decoded_pixels:
+    counts[pixel] = counts.get(pixel, 0) + 1
+
+<span class="comment"># counts is a Python dict used as a hashmap.</span></pre>
+      </div>
+    </section>
+
+    <section class="card" id="references">
+      <h2>9. Other References</h2>
+      <p>Use these only if you want another explanation after working through the activity above.</p>
+      <ul>
+        <li><a href="https://www.youtube.com/watch?v=B3y0RsVCyrw" target="_blank" rel="noopener">Full Reducible video</a>. Watch the full version for the information-theory story.</li>
+        <li><a href="https://www.youtube.com/watch?v=umTbivyJoiI" target="_blank" rel="noopener">How Huffman Trees Work - Computerphile</a>. Watch for how paths through the tree become codes.</li>
+        <li><a href="https://www.youtube.com/watch?v=JsTptu56GM8" target="_blank" rel="noopener">How Computers Compress Text: Huffman Coding and Huffman Trees - Tom Scott</a>. This is a short conceptual explanation.</li>
+        <li><a href="https://www.youtube.com/watch?v=76dhtgZt38A&t=497s" target="_blank" rel="noopener">Binary Trees, Part 1 - MIT OpenCourseWare</a>. Review depth and height, then connect that to decoding cost.</li>
+        <li><a href="https://www.csfieldguide.org.nz/en/chapters/coding-compression/huffman-coding/" target="_blank" rel="noopener">CS Field Guide: Huffman Coding</a>. This is a good written reference.</li>
+      </ul>
+    </section>
+
+    <section class="card" id="readiness">
+      <h2>10. Readiness Check</h2>
+      <p>Before starting the project, make sure these statements feel true. If not, review the relevant section above.</p>
+      <div class="checklist">
+        <label><input type="checkbox">I can explain why <code>A=0</code> and <code>B=01</code> creates ambiguity.</label>
+        <label><input type="checkbox">I can read codes from a tree using left=<code>0</code> and right=<code>1</code>.</label>
+        <label><input type="checkbox">I can trace a bitstring from the root to leaves and reset after each leaf.</label>
+        <label><input type="checkbox">I can compute <code>frequency x code length</code> and average bits per symbol.</label>
+        <label><input type="checkbox">I can explain why binning nearby colors can reduce the number of leaves in a Huffman tree.</label>
+        <label><input type="checkbox">I understand that the project provides the tree and asks me to implement decoding.</label>
+        <label><input type="checkbox">I know that the project output is an image built from decoded RGB pixels.</label>
+      </div>
+      <div class="callout warn">
+        <p><strong>Common mistake to avoid.</strong> Do not append a decoded symbol after every bit. Append only when the tree walk reaches a leaf. Then reset to the root.</p>
+      </div>
+      <label for="reflection-box">One-sentence reflection: why does a Huffman decoder know when one symbol is complete?</label>
+      <textarea id="reflection-box" placeholder="Type a sentence in your own words."></textarea>
+    </section>
+
+    <p class="footer-note">Single-file HTML activity. No external libraries are required; optional video references are ordinary timestamp links.</p>
+  </main>
+
+  <script>
+    const fixedCodes = { A: "00", B: "01", C: "10", D: "11" };
+    const prefixCodes = { A: "0", B: "10", C: "110", D: "111" };
+    const codeLengths = { A: 1, B: 2, C: 3, D: 3 };
+
+    function $(id) {
+      return document.getElementById(id);
+    }
+
+    function setFeedback(id, message, kind) {
+      const element = $(id);
+      element.textContent = message;
+      element.className = "feedback " + kind;
+    }
+
+    function cleanBits(value) {
+      return value.replace(/\s+/g, "");
+    }
+
+    function bindEnter(inputId, handler) {
+      $(inputId).addEventListener("keydown", function(event) {
+        if (event.key === "Enter") {
+          event.preventDefault();
+          handler();
+        }
+      });
+    }
+
+    function checkFixedAnswer() {
+      const answer = cleanBits($("fixed-answer").value);
+      const correct = fixedCodes.A + fixedCodes.B + fixedCodes.C + fixedCodes.D;
+      if (answer === correct) {
+        setFeedback("fixed-feedback", "Correct. ABCD encodes as 00 01 10 11, or 00011011.", "ok");
+      } else if (/[^01]/.test(answer)) {
+        setFeedback("fixed-feedback", "Use only 0s and 1s in the encoded bitstring.", "warn");
+      } else {
+        setFeedback("fixed-feedback", "Replace A, B, C, and D with their two-bit codes, then concatenate the pieces.", "bad");
+      }
+    }
+
+    function revealAmbiguity() {
+      setFeedback("ambiguity-feedback", "The bitstring 010 can be split as 0 | 10, which decodes to AC. It can also be split as 01 | 0, which decodes to BA. One bitstring has two valid meanings.", "warn");
+    }
+
+    function checkPrefixAnswer() {
+      const answer = $("prefix-answer").value.trim().toUpperCase();
+      if (answer === "ACDBA") {
+        setFeedback("prefix-feedback", "Correct. 0 | 110 | 111 | 10 | 0 decodes to A C D B A.", "ok");
+      } else {
+        setFeedback("prefix-feedback", "Read left to right. Stop whenever you reach a complete code, then begin the next symbol.", "bad");
+      }
+    }
+
+    function getFrequency(symbol) {
+      const value = Number($("freq-" + symbol.toLowerCase()).value);
+      if (!Number.isFinite(value) || value < 0) {
+        return 0;
+      }
+      return value;
+    }
+
+    function recalculateCost() {
+      let totalFrequency = 0;
+      let totalCost = 0;
+      Object.keys(codeLengths).forEach(function(symbol) {
+        const frequency = getFrequency(symbol);
+        totalFrequency += frequency;
+        totalCost += frequency * codeLengths[symbol];
+      });
+      if (totalFrequency === 0) {
+        setFeedback("cost-feedback", "Total frequency is 0, so the average cost is not defined.", "warn");
+        return;
+      }
+      setFeedback("cost-feedback", "Total cost: " + totalCost + " bits. Average cost: " + (totalCost / totalFrequency).toFixed(2) + " bits per symbol.", "ok");
+    }
+
+    function checkCodebookChoice() {
+      const selected = document.querySelector("input[name='codebook-choice']:checked");
+      if (!selected) {
+        setFeedback("compare-feedback", "Choose one answer first.", "warn");
+      } else if (selected.value === "1") {
+        setFeedback("compare-feedback", "Correct. Codebook 1 spends only 1 bit on A, the most frequent symbol. The fixed-length codebook spends 2 bits on every symbol.", "ok");
+      } else {
+        setFeedback("compare-feedback", "Compare the total weighted cost. Short codes help most when they belong to frequent symbols.", "bad");
+      }
+    }
+
+    function normalizeText(value) {
+      return value.trim().toLowerCase().replace(/[^a-z0-9]+/g, " ").replace(/\s+/g, " ");
+    }
+
+    function checkVideoUnique() {
+      const selected = document.querySelector("input[name='video-unique-choice']:checked");
+      if (!selected) {
+        setFeedback("video-unique-feedback", "Choose one answer first.", "warn");
+      } else if (selected.value === "unique") {
+        setFeedback("video-unique-feedback", "Correct. Unique decodability means the receiver can recover exactly one original message.", "ok");
+      } else {
+        setFeedback("video-unique-feedback", "The important failure is ambiguity: the receiver cannot know which message was intended.", "bad");
+      }
+    }
+
+    function checkVideoFrequency() {
+      const answer = normalizeText($("video-frequency-answer").value);
+      if (answer === "a" || answer === "symbol a") {
+        setFeedback("video-frequency-feedback", "Correct. A appears more often, so saving bits on A usually reduces the total cost more.", "ok");
+      } else {
+        setFeedback("video-frequency-feedback", "The shorter code should usually go to the symbol that appears more often.", "bad");
+      }
+    }
+
+    function checkVideoTree() {
+      const answer = normalizeText($("video-tree-answer").value);
+      const compact = answer.replace(/\s+/g, "");
+      if (answer === "red green gold" || compact === "redgreengold" || answer === "r g gold") {
+        setFeedback("video-tree-feedback", "Correct. Split the bits as 0 | 10 | 111, which gives red, green, gold.", "ok");
+      } else {
+        setFeedback("video-tree-feedback", "Trace from the root until you hit a leaf, then reset. The split is 0 | 10 | 111.", "bad");
+      }
+    }
+
+    function checkVideoCost() {
+      const answer = Number($("video-cost-answer").value);
+      if (answer === 14) {
+        setFeedback("video-cost-feedback", "Correct. The weighted cost is 8 x 1 + 2 x 3 = 14 bits.", "ok");
+      } else {
+        setFeedback("video-cost-feedback", "Multiply each frequency by its depth, then add the results.", "bad");
+      }
+    }
+
+    function checkVideoMerge() {
+      const selected = document.querySelector("input[name='video-merge-choice']:checked");
+      if (!selected) {
+        setFeedback("video-merge-feedback", "Choose one answer first.", "warn");
+      } else if (selected.value === "cd") {
+        setFeedback("video-merge-feedback", "Correct. Huffman construction starts by combining the two lowest frequencies: C=15 and D=5.", "ok");
+      } else {
+        setFeedback("video-merge-feedback", "Choose the two lowest frequencies, not the two highest.", "bad");
+      }
+    }
+
+    function checkBinnedPixel() {
+      const values = $("binning-pixel-answer").value.match(/\d+/g) || [];
+      const answer = values.map(Number);
+      if (answer.length === 3 && answer[0] === 208 && answer[1] === 64 && answer[2] === 64) {
+        setFeedback("binning-pixel-feedback", "Correct. Each channel is rounded down to the nearest multiple of 16: 213 -> 208, 66 -> 64, and 73 -> 64.", "ok");
+      } else {
+        setFeedback("binning-pixel-feedback", "Keep the top four bits of each channel and replace the low four bits with zeros.", "bad");
+      }
+    }
+
+    function checkBinningChoice() {
+      const selected = document.querySelector("input[name='binning-choice']:checked");
+      if (!selected) {
+        setFeedback("binning-choice-feedback", "Choose one answer first.", "warn");
+      } else if (selected.value === "lossy") {
+        setFeedback("binning-choice-feedback", "Correct. Binning can merge many nearby colors into one symbol, which means fewer leaves.", "ok");
+      } else {
+        setFeedback("binning-choice-feedback", "Look for the version that merges nearby colors before Huffman coding begins.", "bad");
+      }
+    }
+
+    const walkTree = {
+      root: { left: "red", right: "inner" },
+      inner: { left: "green", right: "inner2" },
+      inner2: { left: "blue", right: "gold" },
+      red: { symbol: "red", color: "rgb(220, 62, 54)" },
+      green: { symbol: "green", color: "rgb(47, 125, 79)" },
+      blue: { symbol: "blue", color: "rgb(39, 95, 159)" },
+      gold: { symbol: "gold", color: "rgb(204, 150, 36)" }
+    };
+
+    const walkEdges = {
+      "root-0": "walk-edge-root-red",
+      "root-1": "walk-edge-root-inner",
+      "inner-0": "walk-edge-inner-green",
+      "inner-1": "walk-edge-inner-inner",
+      "inner2-0": "walk-edge-inner-blue",
+      "inner2-1": "walk-edge-inner-gold"
+    };
+
+    const walkNodeIds = {
+      root: "walk-root",
+      inner: "walk-inner",
+      inner2: "walk-inner-2",
+      red: "walk-red",
+      green: "walk-green",
+      blue: "walk-blue",
+      gold: "walk-gold"
+    };
+
+    let walkBits = "0101101110";
+    let walkIndex = 0;
+    let walkNode = "root";
+    let walkPath = "";
+    let walkDepth = 0;
+
+    function setActiveWalk(node, edge) {
+      document.querySelectorAll("#decode-walk .node").forEach(function(element) {
+        element.classList.remove("active");
+      });
+      document.querySelectorAll("#decode-walk .edge").forEach(function(element) {
+        element.classList.remove("active");
+      });
+      $(walkNodeIds[node]).classList.add("active");
+      if (edge) {
+        $(edge).classList.add("active");
+      }
+    }
+
+    function renderWalkStream() {
+      if (!walkBits) {
+        $("walk-stream").textContent = "(no bits loaded)";
+        return;
+      }
+      $("walk-stream").innerHTML = walkBits.split("").map(function(bit, index) {
+        if (index === walkIndex) {
+          return '<span class="current">' + bit + '</span>';
+        }
+        return bit;
+      }).join("");
+    }
+
+    function renderWalkState() {
+      $("walk-path").textContent = walkPath || "(root)";
+      $("walk-depth").textContent = String(walkDepth);
+      renderWalkStream();
+    }
+
+    function emitWalkSymbol(name, code, depth) {
+      const pixel = document.createElement("span");
+      pixel.className = "pixel";
+      pixel.style.backgroundColor = walkTree[name].color;
+      pixel.title = name;
+      $("walk-pixels").appendChild(pixel);
+
+      const item = document.createElement("li");
+      item.textContent = name + ": code " + code + ", depth " + depth;
+      $("walk-output").appendChild(item);
+    }
+
+    function resetWalk(keepBits) {
+      walkIndex = 0;
+      walkNode = "root";
+      walkPath = "";
+      walkDepth = 0;
+      $("walk-status").textContent = "at root";
+      $("walk-last").textContent = "none yet";
+      $("walk-pixels").innerHTML = "";
+      $("walk-output").innerHTML = "";
+      if (!keepBits) {
+        walkBits = cleanBits($("walk-bits").value);
+      }
+      setActiveWalk("root");
+      renderWalkState();
+    }
+
+    function loadWalkBits() {
+      const candidate = cleanBits($("walk-bits").value);
+      if (!candidate) {
+        $("walk-status").textContent = "enter a bitstring";
+        return;
+      }
+      if (/[^01]/.test(candidate)) {
+        $("walk-status").textContent = "bitstrings can contain only 0 and 1";
+        return;
+      }
+      walkBits = candidate;
+      resetWalk(true);
+    }
+
+    function stepWalk() {
+      if (walkIndex >= walkBits.length) {
+        $("walk-status").textContent = walkNode === "root" ? "done" : "stopped before reaching a leaf";
+        return;
+      }
+
+      const bit = walkBits[walkIndex];
+      const current = walkTree[walkNode];
+      const edgeId = walkEdges[walkNode + "-" + bit];
+      walkIndex += 1;
+      walkPath += bit;
+      walkDepth += 1;
+
+      if (bit === "0") {
+        walkNode = current.left;
+      } else if (bit === "1") {
+        walkNode = current.right;
+      } else {
+        $("walk-status").textContent = "invalid bit";
+        renderWalkState();
+        return;
+      }
+
+      setActiveWalk(walkNode, edgeId);
+      if (walkTree[walkNode].symbol) {
+        emitWalkSymbol(walkTree[walkNode].symbol, walkPath, walkDepth);
+        $("walk-last").textContent = walkTree[walkNode].symbol + " used " + walkDepth + " bit step" + (walkDepth === 1 ? "" : "s");
+        $("walk-status").textContent = "decoded " + walkTree[walkNode].symbol + "; return to root";
+        walkNode = "root";
+        walkPath = "";
+        walkDepth = 0;
+        window.setTimeout(function() {
+          if (walkNode === "root") {
+            setActiveWalk("root");
+          }
+        }, 420);
+      } else {
+        $("walk-status").textContent = "read " + bit + "; keep walking";
+      }
+      renderWalkState();
+    }
+
+    $("fixed-check").addEventListener("click", checkFixedAnswer);
+    $("ambiguity-reveal").addEventListener("click", revealAmbiguity);
+    $("prefix-check").addEventListener("click", checkPrefixAnswer);
+    $("cost-calc").addEventListener("click", recalculateCost);
+    $("compare-check").addEventListener("click", checkCodebookChoice);
+    $("video-unique-check").addEventListener("click", checkVideoUnique);
+    $("video-frequency-check").addEventListener("click", checkVideoFrequency);
+    $("video-tree-check").addEventListener("click", checkVideoTree);
+    $("video-cost-check").addEventListener("click", checkVideoCost);
+    $("video-merge-check").addEventListener("click", checkVideoMerge);
+    $("binning-pixel-check").addEventListener("click", checkBinnedPixel);
+    $("binning-choice-check").addEventListener("click", checkBinningChoice);
+    $("walk-load").addEventListener("click", loadWalkBits);
+    $("walk-step").addEventListener("click", stepWalk);
+    $("walk-reset").addEventListener("click", function() { resetWalk(false); });
+    bindEnter("fixed-answer", checkFixedAnswer);
+    bindEnter("prefix-answer", checkPrefixAnswer);
+    bindEnter("video-frequency-answer", checkVideoFrequency);
+    bindEnter("video-tree-answer", checkVideoTree);
+    bindEnter("video-cost-answer", checkVideoCost);
+    bindEnter("binning-pixel-answer", checkBinnedPixel);
+    bindEnter("walk-bits", loadWalkBits);
+    resetWalk(true);
+  </script>
+</body>
+</html>
