@@ -285,13 +285,6 @@
       --section-line: #a5f3fc;
     }
 
-    #project-bridge {
-      --section-color: #4f46e5;
-      --section-ink: #312e81;
-      --section-bg: #eef2ff;
-      --section-line: #c7d2fe;
-    }
-
     #references {
       --section-color: #475569;
       --section-ink: #1f2937;
@@ -1023,8 +1016,7 @@
             <li><a href="#decode-walk">Decoder Walk <span>5</span></a></li>
             <li><a href="#weighted-cost">Weighted Cost <span>6</span></a></li>
             <li><a href="#lossy-binning">Lossy Binning <span>7</span></a></li>
-            <li><a href="#project-bridge">Project Bridge <span>8</span></a></li>
-            <li><a href="#references">References <span>9</span></a></li>
+            <li><a href="#references">References <span>8</span></a></li>
             <li><a href="#readiness">Readiness Check <span>end</span></a></li>
           </ol>
         </nav>
@@ -1423,62 +1415,8 @@
       </div>
     </section>
 
-    <section class="card" id="project-bridge">
-      <h2>8. How This Connects to the Project</h2>
-      <p>The full Huffman construction algorithm repeatedly combines the two lowest-frequency items. That idea is useful later, but it is not required for the first decoding project.</p>
-      <div class="practice-box">
-        <p><strong>Practice.</strong> Frequencies are <code>A=40</code>, <code>B=20</code>, <code>C=15</code>, and <code>D=5</code>. Which two symbols would be combined first?</p>
-        <label class="choice"><input type="radio" name="video-merge-choice" value="ab">A and B</label>
-        <label class="choice"><input type="radio" name="video-merge-choice" value="bc">B and C</label>
-        <label class="choice"><input type="radio" name="video-merge-choice" value="cd">C and D</label>
-        <button type="button" id="video-merge-check">Check Answer</button>
-        <div id="video-merge-feedback" class="feedback" aria-live="polite"></div>
-      </div>
-      <p>In the project, each decoded symbol is an RGB pixel such as <code>(128, 64, 0)</code>. The starter files give you the tree and the compressed bitstring. Your job is to write the decoder that walks the tree and reconstructs the image.</p>
-      <div class="callout project">
-        <p><strong>Important scope.</strong> You do not need to build the Huffman tree in this project. You do not need a heap or priority queue yet. You are practicing how to decode with a tree that has already been built.</p>
-      </div>
-      <div class="two-col">
-        <section>
-          <h3>Decoder algorithm</h3>
-          <ol class="steps">
-            <li><span>Start at the root of the provided tree.</span></li>
-            <li><span>Read one bit from the encoded bitstring.</span></li>
-            <li><span>Move left for <code>0</code> and right for <code>1</code>.</span></li>
-            <li><span>When you reach a leaf, append that leaf's pixel to the output.</span></li>
-            <li><span>Return to the root and continue with the next bit.</span></li>
-            <li><span>Raise an error for invalid bits or an unfinished path.</span></li>
-          </ol>
-        </section>
-        <section>
-          <h3>Project vocabulary</h3>
-          <ul>
-            <li><strong>Tree height:</strong> the length of the deepest root-to-leaf path.</li>
-            <li><strong>Node depth:</strong> the number of edges from the root to that node.</li>
-            <li><strong>Pixel count:</strong> should match <code>width x height</code>.</li>
-            <li><strong>Checksum:</strong> a fingerprint used to verify that the decoded pixels are correct.</li>
-            <li><strong>Compression ratio:</strong> encoded size divided by original size.</li>
-          </ul>
-        </section>
-      </div>
-      <h3>File paths and hashmap counts</h3>
-      <p>The starter code expects all data files to be next to your Python script. Use <code>pathlib.Path</code> so the script works even when run from a different working directory.</p>
-      <div class="two-col">
-        <pre class="code-block"><span class="keyword">from</span> pathlib <span class="keyword">import</span> Path
-
-here = Path(__file__).resolve().parent
-bits_path = here / <span class="string">"encoded_image_bits.txt"</span>
-bits = bits_path.read_text(encoding=<span class="string">"utf-8"</span>)</pre>
-        <pre class="code-block">counts = {}
-<span class="keyword">for</span> pixel <span class="keyword">in</span> decoded_pixels:
-    counts[pixel] = counts.get(pixel, 0) + 1
-
-<span class="comment"># counts is a Python dict used as a hashmap.</span></pre>
-      </div>
-    </section>
-
     <section class="card" id="references">
-      <h2>9. Other References</h2>
+      <h2>8. Other References</h2>
       <p>Use these only if you want another explanation after working through the activity above.</p>
       <ul>
         <li><a href="https://www.youtube.com/watch?v=B3y0RsVCyrw" target="_blank" rel="noopener">Full Reducible video</a>. Watch the full version for the information-theory story.</li>
@@ -1490,7 +1428,7 @@ bits = bits_path.read_text(encoding=<span class="string">"utf-8"</span>)</pre>
     </section>
 
     <section class="card" id="readiness">
-      <h2>10. Readiness Check</h2>
+      <h2>9. Readiness Check</h2>
       <p>Before starting the project, make sure these statements feel true. If not, review the relevant section above.</p>
       <div class="checklist">
         <label><input type="checkbox">I can explain why <code>A=0</code> and <code>B=01</code> creates ambiguity.</label>
@@ -1638,17 +1576,6 @@ bits = bits_path.read_text(encoding=<span class="string">"utf-8"</span>)</pre>
         setFeedback("video-cost-feedback", "Correct. The weighted cost is 8 x 1 + 2 x 3 = 14 bits.", "ok");
       } else {
         setFeedback("video-cost-feedback", "Multiply each frequency by its depth, then add the results.", "bad");
-      }
-    }
-
-    function checkVideoMerge() {
-      const selected = document.querySelector("input[name='video-merge-choice']:checked");
-      if (!selected) {
-        setFeedback("video-merge-feedback", "Choose one answer first.", "warn");
-      } else if (selected.value === "cd") {
-        setFeedback("video-merge-feedback", "Correct. Huffman construction starts by combining the two lowest frequencies: C=15 and D=5.", "ok");
-      } else {
-        setFeedback("video-merge-feedback", "Choose the two lowest frequencies, not the two highest.", "bad");
       }
     }
 
@@ -1833,7 +1760,6 @@ bits = bits_path.read_text(encoding=<span class="string">"utf-8"</span>)</pre>
     $("video-frequency-check").addEventListener("click", checkVideoFrequency);
     $("video-tree-check").addEventListener("click", checkVideoTree);
     $("video-cost-check").addEventListener("click", checkVideoCost);
-    $("video-merge-check").addEventListener("click", checkVideoMerge);
     $("binning-pixel-check").addEventListener("click", checkBinnedPixel);
     $("binning-choice-check").addEventListener("click", checkBinningChoice);
     $("walk-load").addEventListener("click", loadWalkBits);
