@@ -32,6 +32,10 @@
       --red: #a53c34;
       --code: #eef3f7;
       --focus: rgba(16, 117, 111, 0.24);
+      --section-color: var(--accent);
+      --section-ink: var(--accent-strong);
+      --section-bg: #f2fbfa;
+      --section-line: #bfdbd8;
       --ok-bg: #e9f6ee;
       --ok-text: #23633c;
       --warn-bg: #fff4d9;
@@ -89,13 +93,22 @@
     }
 
     .hero {
-      background: linear-gradient(180deg, #ffffff 0%, #fbfdfd 100%);
+      background: linear-gradient(135deg, #ffffff 0%, #fbfdfd 54%, #f3f7ff 100%);
       border: 1px solid var(--line);
-      border-top: 6px solid var(--accent);
+      border-top: 0;
       border-radius: var(--radius);
       box-shadow: var(--shadow);
       overflow: hidden;
       padding: 34px;
+      position: relative;
+    }
+
+    .hero::before {
+      background: linear-gradient(90deg, var(--accent), var(--blue) 48%, var(--gold));
+      content: "";
+      height: 6px;
+      inset: 0 0 auto;
+      position: absolute;
     }
 
     .eyebrow {
@@ -132,6 +145,11 @@
 
     p {
       margin: 0 0 14px;
+    }
+
+    strong {
+      color: #111827;
+      font-weight: 780;
     }
 
     .lead {
@@ -184,6 +202,8 @@
     }
 
     .card {
+      background: linear-gradient(180deg, var(--section-bg) 0, #ffffff 118px);
+      border-top: 4px solid var(--section-color);
       box-shadow: var(--shadow-soft);
       margin: 22px 0;
       padding: 28px;
@@ -191,14 +211,110 @@
     }
 
     .card > h2 {
-      border-bottom: 1px solid var(--line);
+      align-items: flex-start;
+      border-bottom: 1px solid var(--section-line);
+      color: var(--text);
+      display: flex;
+      gap: 10px;
       padding-bottom: 12px;
+    }
+
+    .card > h2::before {
+      background: var(--section-color);
+      border-radius: 999px;
+      box-shadow: 0 0 0 4px var(--section-bg);
+      content: "";
+      flex: 0 0 10px;
+      height: 1.42em;
+      margin-top: 0.04em;
+    }
+
+    #videos {
+      --section-color: #2563eb;
+      --section-ink: #1e3a8a;
+      --section-bg: #eff6ff;
+      --section-line: #bfdbfe;
+    }
+
+    #fixed-length {
+      --section-color: #0f766e;
+      --section-ink: #134e4a;
+      --section-bg: #ecfdf5;
+      --section-line: #b7e4d4;
+    }
+
+    #frequent-symbols {
+      --section-color: #b45309;
+      --section-ink: #7c2d12;
+      --section-bg: #fff7ed;
+      --section-line: #fed7aa;
+    }
+
+    #prefix-free {
+      --section-color: #1d4ed8;
+      --section-ink: #1e3a8a;
+      --section-bg: #eff6ff;
+      --section-line: #bfdbfe;
+    }
+
+    #tree-codebooks {
+      --section-color: #047857;
+      --section-ink: #064e3b;
+      --section-bg: #ecfdf5;
+      --section-line: #a7f3d0;
+    }
+
+    #decode-walk {
+      --section-color: #be123c;
+      --section-ink: #881337;
+      --section-bg: #fff1f2;
+      --section-line: #fecdd3;
+    }
+
+    #weighted-cost {
+      --section-color: #6d28d9;
+      --section-ink: #4c1d95;
+      --section-bg: #f5f3ff;
+      --section-line: #ddd6fe;
+    }
+
+    #lossy-binning {
+      --section-color: #0e7490;
+      --section-ink: #164e63;
+      --section-bg: #ecfeff;
+      --section-line: #a5f3fc;
+    }
+
+    #project-bridge {
+      --section-color: #4f46e5;
+      --section-ink: #312e81;
+      --section-bg: #eef2ff;
+      --section-line: #c7d2fe;
+    }
+
+    #references {
+      --section-color: #475569;
+      --section-ink: #1f2937;
+      --section-bg: #f8fafc;
+      --section-line: #cbd5e1;
+    }
+
+    #readiness {
+      --section-color: #15803d;
+      --section-ink: #14532d;
+      --section-bg: #f0fdf4;
+      --section-line: #bbf7d0;
     }
 
     .mini-card,
     .nav-card {
-      background: var(--surface-soft);
+      background: linear-gradient(180deg, var(--surface-soft), #ffffff);
       padding: 18px;
+    }
+
+    .card .mini-card {
+      border-color: var(--section-line);
+      box-shadow: inset 0 3px 0 var(--section-color);
     }
 
     .mini-card h3,
@@ -207,24 +323,46 @@
     }
 
     .callout {
-      background: #f7fbfb;
-      border-left: 5px solid var(--accent);
+      background: linear-gradient(90deg, var(--section-bg), #ffffff);
+      border-color: var(--section-line);
+      border-left: 5px solid var(--section-color);
       margin: 14px 0;
       padding: 15px 17px;
     }
 
     .callout.warn {
-      border-left-color: var(--gold);
-      background: #fffaf0;
+      --section-color: var(--gold);
+      --section-ink: #6b450d;
+      --section-bg: #fff8e5;
+      --section-line: #efd59c;
     }
 
     .callout.project {
-      border-left-color: var(--blue);
-      background: #f2f7fd;
+      --section-color: var(--blue);
+      --section-ink: #1f4f82;
+      --section-bg: #f2f7fd;
+      --section-line: #bdd3ee;
     }
 
     .callout strong:first-child {
-      color: var(--accent-strong);
+      color: var(--section-color);
+    }
+
+    .callout p > strong:first-child,
+    .practice-box > p:first-child > strong:first-child,
+    .practice-box > label:first-child > strong:first-child {
+      background: #ffffff;
+      border: 1px solid var(--section-line);
+      border-radius: 999px;
+      color: var(--section-color);
+      display: inline-block;
+      font-size: 0.76rem;
+      font-weight: 820;
+      letter-spacing: 0.06em;
+      margin: 0 6px 4px 0;
+      padding: 2px 8px;
+      text-transform: uppercase;
+      vertical-align: 0.08em;
     }
 
     .toc {
@@ -320,12 +458,17 @@
     }
 
     th {
-      background: #edf6f5;
+      background: var(--section-bg);
+      color: var(--section-ink);
       font-weight: 750;
     }
 
     tbody tr:nth-child(even) td {
       background: #fbfcfe;
+    }
+
+    tbody td:first-child {
+      font-weight: 700;
     }
 
     ol,
@@ -338,6 +481,11 @@
       margin: 5px 0;
     }
 
+    li::marker {
+      color: var(--section-color, var(--accent));
+      font-weight: 800;
+    }
+
     .steps {
       counter-reset: step;
       display: grid;
@@ -348,8 +496,8 @@
 
     .steps li {
       align-items: flex-start;
-      background: var(--surface-soft);
-      border: 1px solid var(--line);
+      background: #ffffff;
+      border: 1px solid var(--section-line);
       border-radius: var(--radius);
       display: grid;
       gap: 10px;
@@ -361,7 +509,7 @@
 
     .steps li::before {
       align-items: center;
-      background: var(--accent);
+      background: var(--section-color);
       border-radius: 999px;
       color: #ffffff;
       content: counter(step);
@@ -395,7 +543,7 @@
     input[type="text"]:focus,
     input[type="number"]:focus,
     textarea:focus {
-      border-color: var(--accent);
+      border-color: var(--section-color);
       box-shadow: 0 0 0 4px var(--focus);
       outline: 0;
     }
@@ -408,6 +556,7 @@
 
     input[type="radio"],
     input[type="checkbox"] {
+      accent-color: var(--section-color);
       margin-right: 8px;
       transform: translateY(1px);
     }
@@ -436,6 +585,10 @@
       color: var(--text);
     }
 
+    .card button:not(.secondary) {
+      background: var(--section-color);
+    }
+
     button:hover,
     button:focus,
     .button-link:hover,
@@ -444,6 +597,12 @@
       box-shadow: 0 8px 20px rgba(16, 117, 111, 0.2);
       color: #ffffff;
       transform: translateY(-1px);
+    }
+
+    .card button:not(.secondary):hover,
+    .card button:not(.secondary):focus {
+      background: var(--section-ink);
+      box-shadow: 0 8px 20px rgba(24, 34, 49, 0.16);
     }
 
     button.secondary:hover,
@@ -456,7 +615,9 @@
     }
 
     .feedback {
+      border: 1px solid transparent;
       border-radius: 6px;
+      font-weight: 650;
       margin-top: 10px;
       padding: 10px 12px;
     }
@@ -467,16 +628,19 @@
 
     .feedback.ok {
       background: var(--ok-bg);
+      border-color: #b7dfc5;
       color: var(--ok-text);
     }
 
     .feedback.warn {
       background: var(--warn-bg);
+      border-color: #efd690;
       color: var(--warn-text);
     }
 
     .feedback.bad {
       background: var(--bad-bg);
+      border-color: #efb8b2;
       color: var(--bad-text);
     }
 
@@ -484,14 +648,24 @@
       background: var(--surface-soft);
       border: 1px solid var(--line);
       border-radius: var(--radius-sm);
+      cursor: pointer;
       display: block;
+      font-weight: 500;
       margin: 8px 0;
       padding: 9px 11px;
+      transition: background 140ms ease, border-color 140ms ease, box-shadow 140ms ease, font-weight 140ms ease;
     }
 
     .choice:hover {
       background: #ffffff;
       border-color: var(--line-strong);
+    }
+
+    .choice:has(input:checked) {
+      background: #ffffff;
+      border-color: var(--section-color);
+      box-shadow: inset 4px 0 0 var(--section-color);
+      font-weight: 700;
     }
 
     .tree-wrap,
@@ -614,8 +788,8 @@
     }
 
     .stat {
-      background: var(--surface-soft);
-      border: 1px solid var(--line);
+      background: #ffffff;
+      border: 1px solid var(--section-line);
       border-radius: var(--radius-sm);
       padding: 10px;
     }
@@ -624,6 +798,11 @@
       display: block;
       font-size: 0.82rem;
       color: var(--muted);
+    }
+
+    .stat span {
+      color: var(--section-ink);
+      font-weight: 700;
     }
 
     .code-block {
@@ -665,10 +844,10 @@
     }
 
     .time-link {
-      background: #eef3f7;
-      border: 1px solid var(--line);
+      background: #ffffff;
+      border: 1px solid var(--section-line);
       border-radius: 999px;
-      color: var(--text);
+      color: var(--section-ink);
       display: inline-block;
       font-size: 0.86rem;
       font-weight: 750;
@@ -677,15 +856,16 @@
     }
 
     .practice-box {
-      background: #f7fbf8;
-      border: 1px solid #cfe4d7;
-      border-left: 5px solid var(--green);
+      background: linear-gradient(90deg, var(--section-bg), #ffffff 72%);
+      border: 1px solid var(--section-line);
+      border-left: 5px solid var(--section-color);
       margin-top: 12px;
       padding: 14px 16px;
       border-radius: var(--radius);
     }
 
     .practice-box label:first-child {
+      font-weight: 500;
       margin-top: 0;
     }
 
@@ -705,6 +885,13 @@
       gap: 6px;
       margin: 0;
       padding: 9px 11px;
+    }
+
+    .checklist label:has(input:checked) {
+      background: #ffffff;
+      border-color: var(--section-color);
+      box-shadow: inset 4px 0 0 var(--section-color);
+      font-weight: 700;
     }
 
     .footer-note {
@@ -930,7 +1117,7 @@
         <p>Because each character costs 2 bits, this three-character message costs <code>3 x 2 = 6</code> bits.</p>
       </div>
       <div class="practice-box">
-        <label for="fixed-answer">Practice. With A=<code>00</code>, B=<code>01</code>, C=<code>10</code>, and D=<code>11</code>, encode <code>ABCD</code>.</label>
+        <label for="fixed-answer"><strong>Practice.</strong> With A=<code>00</code>, B=<code>01</code>, C=<code>10</code>, and D=<code>11</code>, encode <code>ABCD</code>.</label>
         <input id="fixed-answer" type="text" inputmode="numeric" autocomplete="off" placeholder="Type a bitstring">
         <button type="button" id="fixed-check">Check Answer</button>
         <div id="fixed-feedback" class="feedback" aria-live="polite"></div>
@@ -972,7 +1159,7 @@
         <p><strong>Example.</strong> Suppose A appears 60 times and B appears 5 times. Saving one bit on A saves 60 bits total, but saving one bit on B saves only 5 bits total. This is why frequent symbols usually belong closer to the root.</p>
       </div>
       <div class="practice-box">
-        <label for="video-frequency-answer">Practice. If symbol <code>A</code> appears 60 times and symbol <code>B</code> appears 5 times, which symbol should usually receive the shorter code?</label>
+        <label for="video-frequency-answer"><strong>Practice.</strong> If symbol <code>A</code> appears 60 times and symbol <code>B</code> appears 5 times, which symbol should usually receive the shorter code?</label>
         <input id="video-frequency-answer" type="text" autocomplete="off" placeholder="Type A or B">
         <button type="button" id="video-frequency-check">Check Answer</button>
         <div id="video-frequency-feedback" class="feedback" aria-live="polite"></div>
@@ -1010,7 +1197,7 @@
         <p><strong>Example.</strong> Decode <code>0100</code> from left to right. The first <code>0</code> is A. The next bits <code>10</code> are B. The final <code>0</code> is A. So <code>0100</code> decodes to <code>ABA</code>.</p>
       </div>
       <div class="practice-box">
-        <label for="prefix-answer">Practice. Using A=<code>0</code>, B=<code>10</code>, C=<code>110</code>, and D=<code>111</code>, decode <code>0110111100</code>.</label>
+        <label for="prefix-answer"><strong>Practice.</strong> Using A=<code>0</code>, B=<code>10</code>, C=<code>110</code>, and D=<code>111</code>, decode <code>0110111100</code>.</label>
         <input id="prefix-answer" type="text" autocomplete="off" placeholder="Type the decoded message">
         <button type="button" id="prefix-check">Check Answer</button>
         <div id="prefix-feedback" class="feedback" aria-live="polite"></div>
@@ -1067,7 +1254,7 @@
         </div>
       </div>
       <div class="practice-box">
-        <label for="video-tree-answer">Practice. Using <code>red=0</code>, <code>green=10</code>, <code>blue=110</code>, and <code>gold=111</code>, decode <code>010111</code>.</label>
+        <label for="video-tree-answer"><strong>Practice.</strong> Using <code>red=0</code>, <code>green=10</code>, <code>blue=110</code>, and <code>gold=111</code>, decode <code>010111</code>.</label>
         <input id="video-tree-answer" type="text" autocomplete="off" placeholder="Type the color names">
         <button type="button" id="video-tree-check">Check Answer</button>
         <div id="video-tree-feedback" class="feedback" aria-live="polite"></div>
@@ -1150,7 +1337,7 @@
       <p><strong>Total cost:</strong> <code>50 + 50 + 45 + 30 = 175</code> bits per 100 symbols.</p>
       <p><strong>Average cost:</strong> <code>175 / 100 = 1.75</code> bits per symbol.</p>
       <div class="practice-box">
-        <label for="video-cost-answer">Practice. If <code>X</code> appears 8 times at depth 1 and <code>Y</code> appears 2 times at depth 3, what is the total weighted cost?</label>
+        <label for="video-cost-answer"><strong>Practice.</strong> If <code>X</code> appears 8 times at depth 1 and <code>Y</code> appears 2 times at depth 3, what is the total weighted cost?</label>
         <input id="video-cost-answer" type="number" min="0" autocomplete="off" placeholder="Type a number">
         <button type="button" id="video-cost-check">Check Answer</button>
         <div id="video-cost-feedback" class="feedback" aria-live="polite"></div>
@@ -1221,7 +1408,7 @@
       </div>
       <p>The smaller tree does not mean Huffman forgot information. The information was simplified before Huffman coding began. The decoded lossy image should match the binned image exactly, not the original image exactly.</p>
       <div class="practice-box">
-        <label for="binning-pixel-answer">Practice. Drop 4 low-order bits from each channel in <code>(213, 66, 73)</code>. What binned RGB value do you get?</label>
+        <label for="binning-pixel-answer"><strong>Practice.</strong> Drop 4 low-order bits from each channel in <code>(213, 66, 73)</code>. What binned RGB value do you get?</label>
         <input id="binning-pixel-answer" type="text" autocomplete="off" placeholder="Example: 208, 64, 64">
         <button type="button" id="binning-pixel-check">Check Answer</button>
         <div id="binning-pixel-feedback" class="feedback" aria-live="polite"></div>
