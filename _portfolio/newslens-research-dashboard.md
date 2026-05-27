@@ -5,9 +5,9 @@ collection: portfolio
 link: https://lab.spectralresidue.com/
 ---
 
-[NewsLens](https://lab.spectralresidue.com/) is a public research dashboard for exploratory news analysis. It supports sentiment-model evaluation, text analysis, research writeups, and source/lens/workflow diagnostics.
+[NewsLens](https://lab.spectralresidue.com/) is a public research dashboard for exploratory news analysis. It supports sentiment-model evaluation, text analysis, research writeups, and source, lens, workflow, and data-quality diagnostics.
 
-Useful entry points:
+Entry points:
 
 - [Model Evaluation](https://lab.spectralresidue.com/evaluation)
 - [Text Analysis](https://lab.spectralresidue.com/text)

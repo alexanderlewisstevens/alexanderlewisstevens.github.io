@@ -11,17 +11,19 @@ redirect_from:
 Small biography. The label is intentionally a code comment, not visible site copy.
 {% endcomment %}
 
-I am a Teaching Assistant Professor in Computer Science at the University of Denver. My work sits around math, theoretical computer science, graph theory, and teaching practices that make STEM classrooms more inclusive and reflective.
+I am a Teaching Assistant Professor in Computer Science at the University of Denver. My work sits around mathematics, theoretical computer science, graph theory, and the teaching practices that make STEM classrooms more inclusive and reflective.
+
+I am especially interested in how precise technical ideas become usable for students. This includes the mathematical structure behind algorithms, the choices we make when introducing abstraction, and the classroom routines that help students ask better questions before a problem has fully settled.
 
 {% comment %}
 Only visitor-facing content belongs on the homepage. Repository mechanics such as
 the HTML drop folder remain documented in README.md and source comments.
 {% endcomment %}
 
-## Selected Work
+## Work
 
-- [Publications](/publications/) lists research publications and related academic writing.
-- [Teaching](/teaching/) collects teaching history and course materials.
+- [Publications](/publications/) collects verified research writing.
+- [Teaching](/teaching/) collects course materials and student-facing activities.
 - [Portfolio](/portfolio/) highlights public projects and technical work.
 
 ## External Projects

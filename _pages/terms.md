@@ -2,7 +2,13 @@
 permalink: /terms/
 title: "Terms and Privacy Policy"
 modified: 2016-06-06
+published: false
 ---
+
+{% comment %}
+The inherited template policy mentions services that are not currently enabled
+on this site. Keep it unpublished until a real policy is written.
+{% endcomment %}
 
 {% include base_path %}
 {% include toc %}

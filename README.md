@@ -9,6 +9,11 @@ This site is built from the `main` branch using Jekyll and the Academic Pages th
 ## Current Site Links
 
 - Website: https://alexanderlewisstevens.github.io/
+- Publications: https://alexanderlewisstevens.github.io/publications/
+- Teaching: https://alexanderlewisstevens.github.io/teaching/
+- Portfolio: https://alexanderlewisstevens.github.io/portfolio/
+- HTML pages: https://alexanderlewisstevens.github.io/html/
+- Huffman decoding activity: https://alexanderlewisstevens.github.io/html/huffman_intro_part1.html
 - LinkedIn: https://www.linkedin.com/in/alex-stevens-02a492197
 - University of Denver profile: https://ritchieschool.du.edu/about/people/alex-l-stevens
 - Spectral Residue: https://spectralresidue.com/
@@ -57,19 +62,18 @@ https://alexanderlewisstevens.github.io/html/
 ## Site Structure
 
 - `_config.yml`: site-wide settings, author information, theme settings, and plugin configuration.
-- `_data/navigation.yml`: top navigation links. Public navigation currently shows Publications, Talks, Teaching, and Portfolio.
-- `_pages/`: main pages such as the homepage, talks, teaching, portfolio, and publications index.
-- `_publications/`: publication entries.
-- `_talks/`: talk entries.
-- `_teaching/`: teaching entries.
+- `_data/navigation.yml`: top navigation links. Public navigation currently shows Publications, Teaching, and Portfolio.
+- `_pages/`: main pages such as the homepage, teaching, portfolio, and publications index.
+- `_publications/`: verified publication entries.
+- `_teaching/`: teaching materials and student-facing activities.
 - `_portfolio/`: portfolio entries.
 - `html/`: standalone HTML drop folder.
-- `files/`: static downloadable files such as PDFs or ZIP files.
+- `files/`: optional static downloadable files such as PDFs or ZIP files.
 - `images/`: profile image, theme images, and other image assets.
 - `.devcontainer/`: VS Code Dev Container configuration.
 - `Dockerfile` and `docker-compose.yaml`: local Jekyll preview environment.
 
-The blog, sitemap, and RSS feed have been intentionally removed from this site. The template CV and Markdown guide are kept out of the public site until they have real visitor-facing content.
+The blog, sitemap, RSS feed, demo archive pages, template CV pages, Markdown guide, talk map, and template talks page are intentionally kept out of the public site until they have real visitor-facing content. Support files such as notebooks, scripts, Docker configuration, and repository documentation are excluded from the GitHub Pages build.
 
 ## Local Development
 

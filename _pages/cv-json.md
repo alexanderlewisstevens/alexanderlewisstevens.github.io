@@ -3,9 +3,14 @@ layout: archive
 title: "CV"
 permalink: /cv-json/
 author_profile: false
+published: false
 redirect_from:
   - /resume-json
 ---
+
+{% comment %}
+The JSON CV page is hidden until real public CV content is ready.
+{% endcomment %}
 
 {% include base_path %}
 

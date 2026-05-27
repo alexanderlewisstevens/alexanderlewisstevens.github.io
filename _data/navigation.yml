@@ -11,9 +11,6 @@ main:
   - title: "Publications"
     url: /publications/
 
-  - title: "Talks"
-    url: /talks/    
-
   - title: "Teaching"
     url: /teaching/    
     
@@ -23,6 +20,10 @@ main:
   # The CV page is intentionally hidden until the real public CV content is ready.
   # - title: "CV"
   #   url: /cv/
+
+  # The talks page is intentionally hidden until real talk entries are ready.
+  # - title: "Talks"
+  #   url: /talks/
 
   # Maintainer/setup pages are documented in README.md and should not be promoted
   # in the public header.

@@ -11,7 +11,13 @@ author_profile: true
 
 {% include base_path %}
 
-<!-- New style rendering if publication categories are defined -->
+{% comment %}
+Only verified publication entries should appear here. Template publications were
+removed from the collection so the archive does not display placeholder records.
+{% endcomment %}
+
+This page collects research writing that has been verified before being added to the site.
+
 {% if site.publication_category %}
   {% for category in site.publication_category  %}
     {% assign title_shown = false %}
@@ -31,6 +37,3 @@ author_profile: true
     {% include archive-single.html %}
   {% endfor %}
 {% endif %}
-
-
-

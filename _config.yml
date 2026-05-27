@@ -26,7 +26,7 @@ author:
   avatar           : "profile.png"
   name             : "Alex"
   pronouns         : "he/him"  
-  bio              : "I love numbers and people! I have spent the last few years teaching and researching math and theoretical computer science. I also spend time trying to implement best practices for fostering inclusive STEM environments and organizing fun tech projects and events!"
+  bio              : "I teach computer science at the University of Denver, with interests in mathematics, theoretical computer science, graph theory, and critically reflective STEM teaching."
   location         : "Denver, Colorado"
   employer         : "University of Denver"
   uri              : # URL
@@ -84,10 +84,10 @@ author:
 
 # Publication Category - The following the list of publication categories and their headings
 publication_category:
-  books:
-    title: 'Books'
+  dissertations:
+    title: 'Dissertation'
   manuscripts:
-    title: 'Journal Articles'    
+    title: 'Articles and Manuscripts'
   conferences:
     title: 'Conference Papers'
 
@@ -179,8 +179,11 @@ exclude:
   - assets/js/vendor
   - CHANGELOG
   - Capfile
+  - CONTRIBUTING.md
   - config
   - Dockerfile
+  - docker-compose.yaml
+  - docker-compose.yml
   - Gemfile
   - Gruntfile.js
   - gulpfile.js
@@ -191,6 +194,14 @@ exclude:
   - package.json*
   - Rakefile
   - README
+  - README.md
+  - SKILL.md
+  - markdown_generator
+  - scripts
+  - talkmap
+  - talkmap.ipynb
+  - talkmap.py
+  - talkmap_out.ipynb
   - tmp
   - vendor
 keep_files:
@@ -222,12 +233,12 @@ kramdown:
 
 # These settings control the types of collections used by the template
 collections:
-  # teaching:
-  #   output: true
-  #   permalink: /:collection/:path/
-  # publications:
-  #   output: true
-  #   permalink: /:collection/:path/
+  teaching:
+    output: true
+    permalink: /:collection/:path/
+  publications:
+    output: true
+    permalink: /:collection/:path/
   portfolio:
     output: true
     permalink: /:collection/:path/
