@@ -6,14 +6,6 @@
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <link rel="icon" href="data:,">
   <title>Part 1: Prefix Codes and Huffman Decoding</title>
-  <!--
-    Static hosting notes for instructors:
-    - This is a single-file activity. CSS, JavaScript, and SVG diagrams are inline.
-    - It can be uploaded to a static host such as GitHub Pages, Netlify, or a course website.
-    - The required lesson content does not depend on external websites.
-    - The required lesson content does not depend on external websites.
-    - Optional YouTube links are provided as ordinary timestamp links, not embedded players.
-  -->
   <style>
     :root {
       --page: #f6f8fb;
@@ -887,13 +879,6 @@
       font-weight: 700;
     }
 
-    .footer-note {
-      color: var(--muted);
-      font-size: 0.92rem;
-      margin-top: 28px;
-      text-align: center;
-    }
-
     @media (max-width: 860px) {
       main {
         width: min(100% - 24px, 1120px);
@@ -989,7 +974,7 @@
     <header class="hero">
       <p class="eyebrow">Part 1: standalone activity</p>
       <h1>Prefix Codes and Huffman Decoding</h1>
-      <p class="lead">This page develops the basic ideas we need for Huffman decoding. The explanations and practice questions are self-contained; the video at the top is optional and gives another route into the same material.</p>
+      <p class="lead">This page develops the basic ideas we need for Huffman decoding. We will move from fixed-length codes to prefix-free tree paths, and then to decoding by tracing bits through a tree.</p>
       <div class="hero-actions">
         <a class="button-link" href="#fixed-length">Start Activity</a>
         <a class="button-link secondary" href="#tree-codebooks">Review Binary Trees</a>
@@ -1025,8 +1010,8 @@
 
     <section class="card" id="videos">
       <h2>Optional Video</h2>
-      <p>I find this video useful, but it is not necessary for completing the activity. Everything needed for the examples and practice questions appears in the text below.</p>
-      <p>The timestamp links are included as a second explanation before or after a section. The video is linked rather than embedded so that the page remains easy to host anywhere.</p>
+      <p>The video is optional. Use it if another explanation would help before or after a section.</p>
+      <p>The timestamp links point to the parts that match the sections below.</p>
       <div class="two-col">
         <div class="mini-card">
           <div class="chapter-meta">
@@ -1417,7 +1402,7 @@
 
     <section class="card" id="references">
       <h2>8. Other References</h2>
-      <p>These links are included as supplemental explanations after working through the activity above.</p>
+      <p>Use these references for another explanation after working through the activity above.</p>
       <ul>
         <li><a href="https://www.youtube.com/watch?v=B3y0RsVCyrw" target="_blank" rel="noopener">Full Reducible video</a>. Watch the full version for the information-theory story.</li>
         <li><a href="https://www.youtube.com/watch?v=umTbivyJoiI" target="_blank" rel="noopener">How Huffman Trees Work - Computerphile</a>. Watch for how paths through the tree become codes.</li>
@@ -1445,8 +1430,6 @@
       <label for="reflection-box">One-sentence reflection: why does a Huffman decoder know when one symbol is complete?</label>
       <textarea id="reflection-box" placeholder="Type a sentence in your own words."></textarea>
     </section>
-
-    <p class="footer-note">This is a single-file HTML activity. No external libraries are required; optional video references are ordinary timestamp links.</p>
   </main>
 
   <script>
