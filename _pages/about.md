@@ -28,10 +28,12 @@ the HTML drop folder remain documented in README.md and source comments.
 
 ## External Projects
 
+- [Java Graph Algorithms Teaching Portfolio](https://github.com/alexanderlewisstevens/graph-algorithms-java) pairs tested Java implementations of core graph algorithms with student and instructor materials.
 - [Spectral Residue](https://spectralresidue.com/) publishes student and contributor work about technology, culture, media, institutions, and the systems that shape everyday life.
 - [NewsLens Research Dashboard](https://lab.spectralresidue.com/) is a public research dashboard for sentiment-model evaluation and AI-assisted news analysis.
 
 ## Links
 
 - [LinkedIn](https://www.linkedin.com/in/alex-stevens-02a492197)
+- [GitHub](https://github.com/alexanderlewisstevens)
 - [University of Denver profile](https://ritchieschool.du.edu/about/people/alex-l-stevens)
