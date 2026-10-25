@@ -1,11 +1,11 @@
 ---
 title: "Spectral Residue"
-excerpt: "Independent, contributor-run media for critical thought, publishing student and contributor work about technology, culture, media, institutions, and the systems that shape everyday life."
+excerpt: "A contributor-run publication for student and independent writing about technology, culture, media, and institutions."
 collection: portfolio
 link: https://spectralresidue.com/
 ---
 
-[Spectral Residue](https://spectralresidue.com/) publishes multimedia notes, explainers, and contributor work about technology, culture, media, institutions, and the systems that shape everyday life.
+[Spectral Residue](https://spectralresidue.com/) publishes student and contributor writing about technology, culture, media, and institutions.
 
 Entry points:
 
