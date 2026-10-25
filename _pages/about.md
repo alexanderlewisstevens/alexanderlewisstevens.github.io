@@ -11,9 +11,9 @@ redirect_from:
 Small biography. The label is intentionally a code comment, not visible site copy.
 {% endcomment %}
 
-I am a Teaching Assistant Professor in Computer Science at the University of Denver. My work sits around mathematics, theoretical computer science, graph theory, and the teaching practices that make STEM classrooms more inclusive and reflective.
+I am an Assistant Teaching Professor of Computer Science at the University of Denver. I teach introductory programming, data structures and algorithms, and discrete mathematics. My research is in graph theory, discrete curvature, and computational geometry.
 
-I am especially interested in how precise technical ideas become usable for students. This includes the mathematical structure behind algorithms, the choices we make when introducing abstraction, and the classroom routines that help students ask better questions before a problem has fully settled.
+Much of my teaching work concerns how students learn to move between code, formal arguments, and plain-language explanations. I also supervise independent studies and applied projects.
 
 {% comment %}
 Only visitor-facing content belongs on the homepage. Repository mechanics such as
@@ -22,15 +22,15 @@ the HTML drop folder remain documented in README.md and source comments.
 
 ## Work
 
-- [Publications](/publications/) collects verified research writing.
-- [Teaching](/teaching/) collects course materials and student-facing activities.
-- [Portfolio](/portfolio/) highlights public projects and technical work.
+- [Publications](/publications/) lists my research articles.
+- [Teaching](/teaching/) includes selected course activities.
+- [Portfolio](/portfolio/) includes software and public projects.
 
 ## External Projects
 
-- [Java Graph Algorithms Teaching Portfolio](https://github.com/alexanderlewisstevens/graph-algorithms-java) pairs tested Java implementations of core graph algorithms with student and instructor materials.
-- [Spectral Residue](https://spectralresidue.com/) publishes student and contributor work about technology, culture, media, institutions, and the systems that shape everyday life.
-- [NewsLens Research Dashboard](https://lab.spectralresidue.com/) is a public research dashboard for sentiment-model evaluation and AI-assisted news analysis.
+- [Java Graph Algorithms](https://github.com/alexanderlewisstevens/graph-algorithms-java) is a tested Java 21 implementation of several standard graph algorithms, with a student activity and instructor note.
+- [Spectral Residue](https://spectralresidue.com/) publishes student and contributor writing about technology, culture, media, and institutions.
+- [NewsLens Research Dashboard](https://lab.spectralresidue.com/) compares sentiment models and provides source- and topic-level views of a news dataset.
 
 ## Links
 
