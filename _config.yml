@@ -8,7 +8,7 @@
 
 # Basic Site Settings
 locale                   : "en-US"
-site_theme               : "dirt" # The available themes options are "default", "air", "sunrise", "mint", "dirt" and "contrast"
+site_theme               : "default" # The available themes options are "default", "air", "sunrise", "mint", "dirt" and "contrast"
 title                    : "Alex Stevens"
 title_separator          : "-"
 name                     : &name "Alex Stevens"
@@ -23,13 +23,13 @@ repository               : "https://github.com/alexanderlewisstevens/alexanderle
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "profile.png"
-  name             : "Alex"
+  avatar           : "alex-stevens-headshot.jpg"
+  name             : "Alex Stevens"
   pronouns         : "he/him"  
-  bio              : "Assistant Teaching Professor of Computer Science at the University of Denver. I teach programming, data structures and algorithms, and discrete mathematics."
+  bio              : "Teaching Assistant Professor of Computer Science at the University of Denver."
   location         : "Denver, Colorado"
   employer         : "University of Denver"
-  uri              : # URL
+  uri              : "https://ritchieschool.du.edu/about/people/alex-l-stevens"
   email            : #"none@example.org" 
 
   # Academic websites

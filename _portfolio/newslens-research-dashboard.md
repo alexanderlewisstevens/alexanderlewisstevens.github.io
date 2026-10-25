@@ -3,9 +3,10 @@ title: "NewsLens Research Dashboard"
 excerpt: "A read-only dashboard for comparing sentiment models and examining source- and topic-level patterns in a news dataset."
 collection: portfolio
 link: https://lab.spectralresidue.com/
+order: 2
 ---
 
-[NewsLens](https://lab.spectralresidue.com/) is a read-only dashboard for comparing sentiment models and examining source- and topic-level patterns. It also documents the dataset and evaluation methods.
+[NewsLens](https://lab.spectralresidue.com/) is a University of Denver student research project. I worked with the student researcher on the public, read-only dashboard, which compares sentiment models and examines source- and topic-level patterns. The site also documents the dataset, methods, and limits of the analysis.
 
 Entry points:
 

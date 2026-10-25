@@ -7,8 +7,9 @@ author_profile: true
 
 {% include base_path %}
 
-Selected software, teaching materials, and public projects. Each entry links to the project itself or to its source code.
+This page collects public work that sits alongside my courses and research. The notes identify whether each project is software, teaching material, or collaborative work with students and contributors.
 
-{% for post in site.portfolio %}
+{% assign portfolio_items = site.portfolio | sort: "order" %}
+{% for post in portfolio_items %}
   {% include archive-single.html %}
 {% endfor %}
