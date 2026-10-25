@@ -12,6 +12,7 @@ This site is built from the `main` branch using Jekyll and the Academic Pages th
 - Publications: https://alexanderlewisstevens.github.io/publications/
 - Teaching: https://alexanderlewisstevens.github.io/teaching/
 - Portfolio: https://alexanderlewisstevens.github.io/portfolio/
+- Java graph algorithms teaching portfolio: https://github.com/alexanderlewisstevens/graph-algorithms-java
 - HTML pages: https://alexanderlewisstevens.github.io/html/
 - Huffman decoding activity: https://alexanderlewisstevens.github.io/html/huffman_intro_part1.html
 - LinkedIn: https://www.linkedin.com/in/alex-stevens-02a492197
